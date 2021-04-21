@@ -1,0 +1,1477 @@
+# Hacking Learning Path
+
+## Topic
+
+- Pentesting
+- OSINT
+  - Introduction to Research
+- Linux
+  - Linux Fundamentals
+  - Linux Privilage Escalation
+  - Linux Challenges
+    - Abusing SUID/GUID
+    - Security Misconfiguration
+    - Misconfigured Binaries
+    - Exploitation LXC/Docker
+    - Exploiting Crontab
+    - Capabilities
+    - Exploiting PATH Variable
+- Networking
+  - Networking Fundamentals
+  - Network Enumeration
+  - Port Poking
+  - SMB Fundamentals, Enumeration, Exploitation
+  - Telnet Fundamentals, Enumeration, Exploitation
+  - FTP Fundamentals, Enumeration, Exploitation
+  - NFS Fundamentals, Enumeratuion, Exploitation
+  - SMTP Fundamentals, Enumeratuion, Exploitation
+  - DNS Enumeration
+  - Pop3 Enumeration
+  - Reverse Shells
+  - Network Tunneling
+- Web Application Security
+  - Web Application Security Fundamentals
+  - Web Application Challenges
+  - Web Poking
+    - Insecure Direct Object Reference
+    - Forced Browsing
+    - API bypassing
+  - Command Injection
+    - Blind Command Injection
+    - Active Command Injection
+    - Privileged Remote and Client-Side Command Execution
+    - Cause
+      - Cross-site Scripting
+      - Directory Traversal
+      - Log Poisoning
+      - Server Side request forgery
+      - XML External Entity
+      - SQL Injection
+    - Effect
+      - OS Command Injection
+      - Local File Inclusion
+      - Remote File Inclusion
+      - Cross-site XMLHttpRequest
+- Cryptography
+  - Character Encoding
+    - Leet Speak 1337
+    - URL Encoding
+    - HTML Entity
+  - Arithmetics Encoding
+    - Decimal
+    - Binary
+    - Hex
+  - Substitution Cipher
+    - ROT11
+    - ROT13
+    - ROT13 (Amount 14)
+    - ROT47
+  - Poly-Alphabetic Cipher
+    - Vigenère
+  - Binary-to-text encoding
+    - Base10
+    - Base16
+    - Base32
+    - Base58
+    - Base62
+    - Base64
+    - Base85
+    - Base91
+  - Programming Language
+    - Brainfuck
+    - Spoon
+  - Communication System
+    - Morse Code
+    - Morse Code (Audio)
+  - Modern Cryptography
+    - AES
+    - RSA
+- Steganography
+- Common Vulnerabilities and Exposures (CVE)
+  - CVE-2004-1561 - Icecast 2.0.1
+  - CVE-2014-0160 - OpenSSL 1.0.1 - 1.0.1f
+  - CVE-2014-0346 - OpenSSL 1.0.1 - 1.0.1f
+  - CVE-2014-6271 - shellshock
+  - CVE-2014-6287 - Rejetto HTTP File Server (HFS) 2.3.x
+  - CVE-2015-1328 - Linux Kernel 3.13.0 < 3.19
+  - CVE-2015-7501 - Jboss Java Deserialization
+  - CVE-2017-0213 - Windows COM Aggregate Marshaler/IRemUnknown2
+  - CVE-2017-8917 - Joomla! 3.7.0
+  - CVE-2019-6714 - BlogEngine.NET 3.3.6
+  - CVE-2019-7609 - Kibana Timelion < 5.6.15 and 6.6.1
+  - CVE-2019-9053 - CMS Made Simple < 2.2.10
+  - CVE-2019-14287 - Sudo < 1.8.28
+  - CVE-2019-15949 - Nagios XI
+  - CVE-2017-16995 - Linux Kernel < 4.13.9
+  - CVE-2018-17057 - LimeSurvey < 3.16
+  - CVE-2019-18634 - Sudo 1.8.25p - 'pwfeedback' Buffer Overflow
+  - CVE-2020-1938 - Apache Tomcat
+  - CVE-2020-12772 - Spark 2.8.3
+- Exploitation
+  - Metasploit
+  - Metasploit Challenges
+- Hash Cracking
+- Brute Forcing
+  - Brute Forcing Challenges
+  - Brute Forcing (Zip)
+  - Brute Forcing (FTP)
+  - Brute Forcing (http-get)
+  - Brute Forcing (http-post-form)
+  - Brute Forcing (Burp Intruder)
+  - Brute Forcing (Wordpress)
+  - Brute Forcing (Joomla)
+  - Brute Forcing (Json API)
+  - Brute FOrcing (SSH)
+  - Brute Forcing (SSH Key)
+  - Brute Forcing (pfx)
+  - Brute Forcing (Hash)
+  - Brute Forcing (Vigenere)
+  - Brute Forcing (NTML)
+  - Brute Forcing (Binary)
+  - Brute Forcing (GPG)
+  - Brute Forcing (KDBX KeePass)
+- Windows
+  - Windows Fundamentals
+  - Windows Privilage Escalation
+  - Windows Post-Exploitation
+  - Windows Challenges
+- Databases
+- Scripting
+  - Scripting Challenges
+- Forensic
+  - System Forensic
+  - Network Forensic
+- Reverse Engineering
+  - Reverse Engineering Challenges
+- Puzzle Challenges
+- Miscellaneous
+
+### TryHackMe
+
+- [Tutorial](Tutorial/README.md)
+  - TryHackMe Tutorial
+- [Kali Machine](Kali%20Machine/README.md)
+  - TryHackMe Tutorial
+- [Getting Started](Getting%20Started/README.md)
+  - TryHackMe Tutorial
+  - Web Poking
+- [Starting Out In Cyber Sec](Starting%20Out%20In%20Cyber%20Sec/README.md)
+  - TryHackMe Tutorial
+  - Cyber Security Career Paths
+
+### Open Source Intelligence (Walkthroughs)
+
+- [Introductory Researching](Introductory%20Researching/README.md)
+  - OSINT
+  - Vulnerability Analysis
+  - Linux Fundamentals
+- [Google Dorking](Google%20Dorking/README.md)
+  - OSINT
+- [OhSINT](OhSINT/README.md)
+  - OSINT
+  - Steganography
+  - Passive Web Enumeration
+- [Geolocating Images](Geolocating%20Images/README.md)
+  - Geolocating
+  - OSINT
+- [Shodan.io](Shodan.io/README.md)
+  - Shodan.io Fundamentals
+  - OSINT
+- [Sublist3r](Sublist3r/README.md)
+  - Sublist3r Fundamentals
+  - OSINT
+  - Web Enumeration
+
+### Linux Fundamentals (Walkthroughs)
+
+- [Learn Linux](Learn%20Linux/README.md)
+  - Linux Fundamentals
+- [NIS - Linux Part I](NIS%20-%20Linux%20Part%20I/README.md)
+  - Linux Fundamentals
+- [The find command](The%20find%20command/README.md)
+  - Linux Fundamentals
+  - Linux find Command
+- [Ninja Skills](Ninja%20Skills/README.md)
+  - Linux Fundamentals
+  - Linux find Command
+- [Linux: Local Enumeration](Linux%20Local%20Enumeration/README.md)
+  - Linux Fundamentals
+  - Linux Local Enumeration
+- [Linux Challenges](Linux%20Challenges/README.md)
+  - Linux Fundamentals
+  - Linux find Command
+  - Privilage Escalation
+  - Cryptography
+    - Base64
+    - Hex
+  - SQL Enumeration
+
+### Networking Fundamentals (Walkthroughs)
+
+- [Networking](Networking/README.md)
+  - Network Fundamentals
+- [Nmap](Nmap/README.md)
+  - NMAP Fundamentals
+  - Network Enumeration
+- [Wireshark 101](Wireshark%20101/README.md)
+  - Wireshark Fundamentals
+  - Network Forensics
+- [Introductory Networking](Introductory%20Networking/README.md)
+  - Network Fundamentals
+  - Network Forensics
+  - Network Enumeration
+- [Network Services](Network%20Services/README.md)
+  - SMB Fundamentals
+  - SMB Enumeration
+  - SMB Exploitation
+  - Telnet Fundamentals
+  - Telnet Enumeration
+  - Telnet Exploitation
+  - FTP Fundamentals
+  - FTP Enumeration
+  - FTP Exploitation
+- [Network Services 2](Network%20Services%202/README.md)
+  - NFS Fundamentals
+  - NFS Enumeratuion
+  - NFS Exploitation
+  - SMTP Fundamentals
+  - SMTP Enumeratuion
+  - SMTP Exploitation
+  - MySQL Fundamentals
+  - MySQL Enumeratuion
+  - MySQL Exploitation
+
+### Web Application Security (Walkthroughs)
+
+- [Web Fundamentals](Web%20Fundamentals/README.md)
+  - Web Fundamentals
+- [Burp Suite](Burp%20Suite/README.md)
+  - Web Application Analysis
+  - Burp Suite Fundamentals
+- [Web Scanning](Web%20Scanning/README.md)
+  - Web Application Analysis
+  - OWASP Zap Fundamentals
+- [OWASP ZAP](OWASP%20ZAP/README.md)
+  - Web Application Analysis
+  - OWASP Zap Fundamentals
+- [Nessus](Nessus/README.md)
+  - Web Application Analysis
+  - Nesus Fundamentals
+- [Content Security Policy](Content%20Security%20Policy/README.md)
+  - Content Security Policy Fundamentals
+  - Bypass Content Security Policy
+- [Upload Vulnerabilities](Upload%20Vulnerabilities/README.md)
+  - Bypassing Client-Side Filtering
+  - Bypassing Server-Side Filtering: File Extensions
+  - Bypassing Server-Side Filtering: Magic Numbers
+- [Cross-site Scripting](Cross-site%20Scripting/README.md)
+  - Stored XSS
+  - Reflected XSS
+  - DOM-Based XSS
+  - Filter Evasion
+- [Authenticate](Authenticate/README.md)
+  - Brute Force (http-post-form)
+  - Re-registration
+  - JSON Web Token
+- [SSRF](SSRF/README.md)
+  - Server Side request forgery (SSRF)
+- [XXE](XXE/README.md)
+  - XML Fundamentals
+  - XML External Entity (XXE)
+- [ZTH: Web 2](ZTH%20Web%202/README.md)
+  - Insecure Direct Object Reference
+  - Forced Browsing
+  - API Authentication Bypass
+- [OWASP Top 10](OWASP%20Top%2010/README.md)
+  - Injection
+  - OS Command Injection
+  - Command Injection
+  - Broken Authentication
+  - Sensitive Data Exposure
+  - XML External Entity
+  - Broken Access Control
+  - Security Misconfiguration
+  - Cross-site Scripting
+  - Insecure Deserialization
+  - Known Vulnerabilities
+  - Insufficient Logging and Monitoring
+- [OWASP Juice Shop](OWASP%20Juice%20Shop/README.md)
+  - Web Poking
+  - OSINT
+  - Email Injection
+  - Brute Forcing (Burp Intruder)
+  - Sensitive Data Exposure
+  - Poison Null Byte
+  - Broken Access Control
+  - Cross-site Scripting
+- [WebAppSec 101](WebAppSec%20101/README.md)
+  - Network Enumeration
+  - Web Poking
+  - Security Misconfiguration
+  - Cross-site Scripting
+  - Injection
+  - Logic Flaws
+- [ZTH: Obscure Web Vulns](ZTH%20Obscure%20Web%20Vulns/README.md)
+  - Server Side Template Injection (SSTI)
+  - Cross-site Request Forgery (CSRT)
+  - Json Web Token (JWT)
+  - XML External Entity Injection (XXE)
+- [CTF collection Vol.2](CTF%20collection%20Vol.2/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Poking
+  - Cryptography
+    - Hex
+    - URL encoding
+    - Base64
+  - SQL Enumeration
+  - Brute Forcing Hash
+  - Web Cookie Manipulation
+  - Web Header Manipulation
+  - Python Scripting (Decoder)
+  - Reverse Engineering
+
+### Web Application Security (Challenges)
+
+- UNSOLVED: [Internal](Internal/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Enumeration (Wordpress)
+  - Exploitation (Wordpress)
+- [Avengers Blog](Avengers%20Blog/README.md)
+  - Cookie Enumeration
+  - Web Header Eumeration
+  - Network Enumeration
+  - Web Poking
+  - FTP Enumeration
+  - SQL Injection
+  - Command Injection
+- [AttackerKB](AttackerKB/README.md)
+  - Network Enumeration
+  - Webmin 1.890 Exploit
+  - Metasploit (webmin_backdoor)
+- [ToolsRus](ToolsRus/README.md)
+  - Web Enumeration
+  - Web Application Analysis
+  - Network Enumeration
+  - Brute Forcing HTTP-GET
+  - Exploitation Tomcat
+- [Vulnversity](Vulnversity/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Exploitation Upload
+  - Abusing SUID/GUID
+- [Ignite](Ignite/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Security Misconfiguration
+  - Exploitation Upload
+  - Stored Passwords & Keys
+- [Dav](Dav/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Security Misconfiguration
+  - WebDav Enumeration
+  - Misconfigured Binaries
+- [Tartarus](Tartarus/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - FTP Enumeration
+  - Brute Forcing (http-post-form)
+  - Exploitation Upload
+  - Security Misconfiguration
+- [Mr Robot CTF](Mr%20Robot%20CTF/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Brute Forcing (Wordpress)
+  - Brute Forcing (Hash)
+  - Abusing SUID/GUID
+- [Boiler CTF](Boiler%20CTF/README.md)
+  - FTP Enumeration
+  - Network Enumeration
+  - Web Enumeration
+  - Exploitation Joomle Sar2HTML 3.2.1
+  - Stored Passwords & Keys
+  - Abusing SUID/GUID
+- [ConvertMyVideo](ConvertMyVideo/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Poking
+  - Remote File Inclusion
+  - Brute Forcing (Hash)
+
+### Command Injection (Walkthroughs)
+
+- [Injection](Injection/README.md)
+  - Command Injection Fundamentals
+  - Blind Command Injection
+  - Active Command Injection
+- [LFI Basics](LFI%20Basics/README.md)
+  - Local File Inclusion Fundamentals
+  - Directory Traversal
+  - Log Poisoning
+- [LFI](LFI/README.md)
+  - Local File Inclusion
+  - Directory Traversal
+  - Misconfigured Binaries (/bin/journalctl)
+
+### Command Injection (Challenges)
+
+- [Inclusion](Inclusion/README.md)
+  - Network Enumeration
+  - Directory Traversal
+  - Brute Forcing Hash
+  - Misconfigured Binaries
+- [dogcat](dogcat/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Poking
+  - Local File Inclusion
+  - Directory Traversal
+  - Python Scripting (Log Poisoning)
+  - Log Poisoning
+  - Abusing SUID/GUID
+  - Misconfigured Binaries
+- [Develpy](Develpy/README.md)
+  - Network Enumeration
+  - Code Injection (RCE)
+  - Exploiting Crontab
+- [Carpe Diem 1](Carpe%20Diem%201/README.md)
+  - Network Enumeration
+  - Web Poking
+  - Web Enumeration
+  - Cross-site XMLHttpRequest
+  - Enumeration (GraphQL)
+  - Brute Forcing (KDBX KeePass)
+
+### SQL Injection (Challenges)
+
+- [Game Zone](Game%20Zone/README.md)
+  - SQL Injection
+  - Brute Forcing (Hash)
+  - SSH Tunneling
+  - Privileged Remote and Client-Side Command Execution
+- [Jurassic Park](Jurassic%20Park/README.md)
+  - Network Enumeration
+  - Web Enermeration
+  - Bash SCripting (Fuzzing)
+  - SQL Enumeration
+  - SQL Injection
+  - Linux Enumeration
+  - Misconfigured Binaries
+
+### Cryptography & Steganography (Walkthroughs)
+
+- [CC: Steganography](CC%20Steganography/README.md)
+  - Steganography
+- [Musical Stego](Musical%20Stego/README.md)
+  - Steganography
+- [c4ptur3-th3-fl4g](c4ptur3-th3-fl4g/README.md)
+  - Cryptography
+    - L33t
+    - Binary
+    - Base32
+    - Base64
+    - Hex
+    - ROT13
+    - ROT47
+    - Morse Code
+    - Decimal
+  - Steganography
+- [CTF collection Vol.1](CTF%20collection%20Vol.1/README.md)
+  - Cryptography
+    - Base64
+    - Base58
+    - ROT13
+    - Caesar
+    - Brainfuck
+    - Hex
+    - Vigenère
+    - Decimal
+  - Steganography
+  - Revers Engineering
+  - Web Poking
+
+### Cryptography & Steganography (Challenges)
+
+- [The Impossible Challenge](The%20Impossible%20Challenge/README.md)
+  - Cryptography
+    - ROT13
+    - ROT47
+    - Hex
+    - Base64
+  - Web Poking
+  - Steganography
+- [Pickle Rick](Pickle%20Rick/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Poking
+  - Cryptography
+    - Base64
+  - Misconfigured Binaries
+- [Cicada-3301 Vol:1](Cicada-3301%20Vol.1/README.md)
+  - Steganography
+  - Cryptography
+    - Base64
+    - Vigenère
+
+### Reverse Shells (Walkthroughs)
+
+- [What the Shell?](What%20the%20Shell/README.md)
+  - Reverse Shell Fundamentals
+  - Shell Stabilisation
+  - Common Shell Payloads
+  - Metasploit (multi/handler)
+  - Msfvenom (Payloads)
+  - WebShells
+
+### Pentesting (Walkthroughs)
+
+- [BasicPentesting](BasicPentesting/README.md)
+  - Web Enumeration
+  - Linux Enumeration
+  - Brute Forcing Hash
+  - Brute Forcing SSH Key
+- [CC: Pen Testing](CC%20Pen%20Testing/README.md)
+  - Network Enumaration
+  - Web Enumeration
+  - Exploitation
+  - SQL Injection
+  - SMB Enumaration
+  - Brute Forcing Hash
+  - Misconfigured Binaries
+
+### Common Vulnerabilities and Exposures (CVE)
+
+- [Sudo Security Bypass](Sudo%20Security%20Bypass/README.md)
+  - Misconfigured Binaries
+  - CVE-2019-14287 - Sudo < 1.8.28
+- [Sudo Buffer Overflow](Sudo%20Buffer%20Overflow/README.md)
+  - Misconfigured Binaries
+  - CVE-2019-18634 - Sudo 1.8.25p - 'pwfeedback' Buffer Overflow
+- [kiba](kiba/README.md)
+  - Network Enumeration
+  - CVE-2019-7609 - Kibana Timelion < 5.6.15 and 6.6.1
+  - Capabilities
+- [tomghost](tomghost/README.md)
+  - Network Enumeration
+  - CVE-2020-1938 - Apache Tomcat
+  - Brute Forcing (GPG)
+  - Misconfigured Binaries
+- [hackerNote](hackerNote/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Username timing attack
+  - Brute Forcing (http-post-form)
+  - CVE-2019-18634 - Sudo 1.8.25p - 'pwfeedback' Buffer Overflow
+- [Agent Sudo](Agent%20Sudo/README.md)
+  - Network Enumeration
+  - Web Header Manipulation
+  - Brute Forcing (FTP)
+  - Brute Forcing (Zip)
+  - Steganography
+  - Cryptography
+    - Base64
+  - OSINT
+  - CVE-2019-14287 - Sudo < 1.8.28
+- [Ghizer](Ghizer/README.md)
+  - Network Enumeration
+  - Security Misconfiguration
+  - CVE-2018-17057 - LimeSurvey < 3.16
+  - Stored Passwords & Keys
+  - Abusing SUID/GUID
+- [NerdHerd](NerdHerd/README.md)
+  - Network Enumeration
+  - Linux Enumeration
+  - FTP Enumeration
+  - SMB Enumeration
+  - Steganography
+  - Cryptography
+    - Base64
+    - Vigenère
+  - CVE-2017-16995 - Linux Kernel < 4.13.9
+- [Daily Bugle](Daily%20Bugle/README.md)
+  - Network Enumeration
+  - Web Poking
+  - Enumeration (Joomla)
+  - CVE-2017-8917 - Joomla! 3.7.0
+  - Brute Forcing (Joomla)
+  - Stored Passwords & Keys
+  - Misconfigured Binaries
+- UNSOLVED: [GoldenEye](GoldenEye/README.md)
+  - Network Enumeration
+  - Cryptography
+    - HTML Entity
+    - Base64
+  - Pop3 Enumeration
+  - Brute Force (Pop3)
+  - Stored Passwords & Keys
+  - Steganography
+  - CVE-2015-1328 - Linux Kernel 3.13.0 < 3.19
+- [Simple CTF](Simple%20CTF/README.md)
+  - Web Enumeration
+  - Network Enumeration
+  - CVE-2019-9053 - CMS Made Simple < 2.2.10
+  - Brute Forcing (SSH)
+  - Misconfigured Binaries
+- [Tony the Tiger](Tony%20the%20Tiger/README.md)
+  - Network Enumeration
+  - Web Poking
+  - CVE-2015-7501 - Jboss Java Deserialization
+  - Stored Passwords & Keys
+  - Misconfigured Binaries
+  - Brute Forcing (Hash)
+- [HeartBleed](HeartBleed/README.md)
+  - HeartBleed
+  - CVE-2014-0346 - OpenSSL 1.0.1 - 1.0.1f
+  - CVE-2014-0160 - OpenSSL 1.0.1 - 1.0.1f
+
+### Metasploit (Walkthroughs)
+
+- [Metaspliot](Metaspliot/README.md)
+  - Metasploit Fundamentals
+  - Networking
+  - Network Enumeration
+  - Vulnerability Analysis
+  - Reverse Shell
+  - Exploitation
+  - Network Tunneling
+
+### Metasploit (Challenges)
+
+- [Source](Source/README.md)
+  - Network Enumeration
+  - Metasploit (webmin_backdoor)
+- [Bolt](Bolt/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Poking
+  - Security Misconfiguration
+  - Using Metasploit
+  - Exploitation Bolt CMS 3.7.0
+- [Blue](Blue/README.md)
+  - Network Enumeration
+  - Metasploit (MS17-010)
+  - Metasploit (hashdump)
+  - Brute Forcing (Hash)
+- [Ice](Ice/README.md)
+  - Network Enumeration
+  - CVE-2004-1561 - Icecast 2.0.1
+  - Metasploit (local_exploit_suggester)
+  - Metasploit (bypassuac_eventvwr)
+- [Blog](Blog/README.md)
+  - Network Enumeration
+  - Enumeration (Wordpress)
+  - Metasploit (wp_crop_rce)
+  - Abusing SUID/GUID
+- [Nax](Nax/README.md)
+  - Network Enumeration
+  - Steganography
+  - CVE-2019-15949 - Nagios XI
+  - Metasploit (nagios_xi_authenticated_rce)
+- [Poster](Poster/README.md)
+  - Network Enumeration
+  - Metasploit (postgres_login)
+  - Metasploit (postgres_sql)
+  - Metasploit (postgres_hashdump)
+  - Metasploit (postgres_readfile)
+  - Metasploit (postgres_copy_from_program_cmd_exec)
+  - Stored Passwords & Keys
+  - Misconfigured Binaries
+
+### Brute Forcing (Walkthroughs)
+
+- [Encryption - Crypto 101](Encryption%20-%20Crypto%20101/README.md)
+  - Brute Forcing
+- [Hashing - Crypto 101](Hashing%20-%20Crypto%20101/README.md)
+  - Brute Forcing
+- [Hydra](Hydra/README.md)
+  - Hydra Fundamentals
+  - Brute Forcing (FTP
+  - Brute Forcing (SSH)
+  - Brute Forcing (http-post-form)
+
+### Brute Forcing (Challenges)
+
+- UNSOLVED: [Crack the hash](Crack%20the%20hash/README.md)
+  - Brute Forcing
+- [Brute It](Brute%20It/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Souce Code Enumeration
+  - Brute Forcing (http-post-form)
+  - Brute Forcing (SSH)
+  - Misconfigure Binary (/bin/cat)
+  - Brute Forcing (Hash)
+- [Mnemonic](Mnemonic/README.md)
+  - Network Enumeration
+  - Web Poking
+  - Web Enumeration
+  - Brute Forcing (Zip)
+  - Brute Forcing (FTP)
+  - Brute Forcing (SSH)
+  - Cryptography
+    - Base64
+  - Misconfigured Binaries
+- [CherryBlossom](CherryBlossom/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Rerverse Engineering
+  - Brute Forcing (Zip)
+  - Brute Forcing (Hash)
+  - Brute Forcing (SSH)
+  - Brute Forcing (Hash)
+  - CVE-2019-18634 - Sudo 1.8.25p - 'pwfeedback' Buffer Overflow
+- [Anonforce](Anonforce/README.md)
+  - Network Enumeration
+  - FTP Enumeration
+  - Brute Forcing GPG
+  - Backup Poking
+  - Brute Forcing Hash
+- [Tempus Fugit Durius](Tempus%20Fugit%20Durius/README.md)
+  - Network Enumeration
+  - Code Injection
+  - Stored Passwords & Keys
+  - Exploitation FTP
+  - DNS Enumeration
+  - SQL Enumeration
+  - Brute Forcing (Hash)
+
+### Linux Privilage Escalation (Walkthroughs)
+
+- [Common Linux Privesc](Common%20Linux%20Privesc/README.md)
+  - Privilege Escalation Fundamentals
+  - Privilege Escalation Enumeration
+  - Abusing SUID/GUID
+  - Exploiting Writeable
+  - Misconfigured Binaries
+  - Exploiting Crontab
+  - Exploiting PATH Variable
+- [Linux PrivEsc](Linux%20PrivEsc/README.md)
+  - Misconfigured Services
+  - Exploiting Writeable
+  - Brute Forcing Hash
+  - Misconfigured Binaries
+  - Exploiting PATH Variable
+  - Exploiting Crontab
+  - Abusing SUID/GUID
+  - Linux Enumeration
+  - Stored Passwords & Keys
+  - NFS Enumaration
+  - Kernel Exploits
+- [Linux PrivEsc Arena](Linux%20PrivEsc%20Arena/README.md)
+  - Kernel Exploits
+  - Stored Passwords & Keys
+  - Misconfigured Binaries
+  - Abusing SUID/GUID
+  - Capabilities
+  - Exploiting Crontab
+  - NFS Enumaration
+
+#### Abusing SUID/GUID
+
+- [RootMe](RootMe/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Abusing SUID/GUID
+- [Anonymous](Anonymous/README.md)
+  - Network Enumeration
+  - SMB Enumeration
+  - FTP Enumeration
+  - Security Misconfiguration
+  - Abusing SUID/GUID
+- [Jack-of-All-Trades](Jack-of-All-Trades/README.md)
+  - Network Enumeration
+  - Web Poking
+  - Cryptography
+    - Base64
+    - Base32
+    - Hex
+    - ROT13
+  - Steganography
+  - Code Injection (RCE)
+  - Brute Forcing SSH
+  - Abusing SUID/GUID
+- [harder](harder/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Security Misconfiguration
+  - Enumeration (Git)
+  - Code Injection
+  - Exploiting Crontab
+  - Abusing SUID/GUID
+- [Racetrack Bank](Racetrack%20Bank/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Code Injection
+  - Abusing SUID/GUID
+
+#### Security Misconfiguration
+
+- [Kenobi](Kenobi/README.md)
+  - Network Enumeration
+  - SMB Enumeration
+  - SMB Exploitation
+  - Abusing SUID/GUID
+  - Network Enumeration
+  - FTP Enumeration
+  - Brute Forcing SSH
+  - Security Misconfiguration
+
+#### Misconfigured Binaries
+
+- [Erit Securus I](Erit%20Securus%20I/README.md)
+  - Network Enuemration
+  - Exploitation Bolt CMS 3.7.0
+  - SQL Enumeration
+  - Brute Forcing (Hash)
+  - Misconfigured Binaries (/usr/bin/zip)
+- [Brooklyn Nine Nine](Brooklyn%20Nine%20Nine/README.md)
+- [Wgel CTF](Wgel%20CTF/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Poking
+  - Security Misconfiguration
+  - Misconfigured Binaries
+- [LazyAdmin](LazyAdmin/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Backup Poking
+  - Brute Forcing (Hash)
+  - Misconfigured Binaries
+- [Revenge](Revenge/README.md)
+  - Network Enumeration
+  - SQL Enumeration
+  - Brute Forcing (Hash)
+  - Misconfigured Binaries
+- [StuxCTF](StuxCTF/README.md)
+  - Network Enumeration
+  - Web Poking
+  - Cryptography
+    - AES
+  - Local File Inclusion
+  - Misconfigured Binaries
+- [Year of the Pig](Year%20of%20the%20Pig/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Brute Forcing (http-get)
+  - Local File Inclusion
+  - SQL Enumeration
+  - Misconfigured Binaries
+- [Bounty Hacker](Bounty%20Hacker/README.md)
+  - Network Enumeration
+  - FTP Enumeration
+  - Brute Forcing (SSH)
+  - Misconfigured Binaries
+- [symfonos6](symfonos6/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Cross-site Scripting
+  - Stored Passwords & Keys
+  - Code Injection
+  - Misconfigured Binaries
+- [Overpass](Overpass/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Poking
+  - Cookie Manipulation
+  - Brute Forcing (SSH)
+  - Cryptography
+    - ROT47
+  - Linux Enumeration
+  - Exploiting Crontab
+  - Abusing SUID/GUID
+  - Misconfigured Binaries
+- [Misguided Ghosts](Misguided%20Ghosts/README.md)
+  - Network Enumeration
+  - FTP Enumeration
+  - Port Knocking
+  - Web Enumeration
+  - SSL Enumeration
+  - Cookie Manipulation
+  - Code Injection
+  - Brute Forcing (Vigenere)
+  - SMB Enumeration
+  - Brute FOrcing (SSH)
+  - Misconfigured Binaries
+- [Library](Library/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Poking
+  - Brute Forcing (SSH)
+  - Misconfigured Binaries
+  - Python Scripting (Rev Shell)
+- [Year of the Fox](Year%20of%20the%20Fox/README.md)
+  - Network Enumeration
+  - SMB Enumeration
+  - Linux Enumeration
+  - Brute Force (http-get)
+  - Code Injection
+  - Network Tunneling
+  - Brute Force (SSH)
+  - Misconfigured Binaries
+- [Inoculation](Inoculation/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Poking
+  - Misconfigured Binaries
+  - Kernal Exploitation
+
+#### Exploitation LXC/Docker
+
+- [GamingServer](GamingServer/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Poking
+  - Security Misconfiguration
+  - Brute Forcing Hash
+  - Exploitation LXC
+- [HA Joker CTF](HA%20Joker%20CTF/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Brute Forcing (http-get)
+  - Backup Poking
+  - Brute Forcing (Zip)
+  - Stored Passwords & Keys
+  - SQL Enumeration
+  - Brute Forcing (Hash)
+  - Exploitation (LXC)
+- [For Business Reasons](For%20Business%20Reasons/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Enumeration (Wordpress)
+  - Brute Forcing (Wordpress)
+  - Exploitation (Wordpress)
+  - Security Misconfiguration
+  - Stored Passwords & Keys
+  - Network Tunneling
+  - Exploitation (LXC)
+- [UltraTech](UltraTech/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Poking
+  - Command Injection
+  - Brute Forcing Hash
+  - Exploitation Docker
+- [The Marketplace](The%20Marketplace/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Cookie Manipulation
+  - SQL Enumeration
+  - Misconfigured Binaries
+  - Exploitation Docker
+- [Year of the Dog](Year%20of%20the%20Dog/README.md)
+  - Network Enumeration
+  - SQL Injection
+  - Reverse Engineering
+  - SQL Manupilation
+  - Git Hook Exploitation
+  - Docker Escape
+
+#### Exploiting Crontab
+
+- [CMesS](CMesS/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - DNS Enumeration
+  - Stored Passwords & Keys
+  - SQL Enumeration
+  - Backup Poking
+  - Exploiting Crontab
+- [Jack](Jack/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Enumeration (Wordpress)
+  - Brute Forcing (Wordpress)
+  - Code Injection (RCE)
+  - Exploiting Crontab
+- [Skynet](Skynet/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - SMB Enumeration
+  - Brute Forcing (http-post-form)
+  - Local File Inclusion
+  - Directory Traversal
+  - Exploiting Crontab
+- [Easy Peasy](Easy%20Peasy/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Cryptography
+    - Base64
+    - Base62
+    - Binary
+  - Web Poking
+  - Brute Forcing (Hash)
+  - Stegangraphy
+  - Exploiting Crontab
+- [Anonymous Playground](Anonymous%20Playground/README.md)
+  - Network Enumeration
+  - Web Poking
+  - Cookie Manipulation
+  - Python Scripting (Decoding)
+  - Reverse Engineering
+  - Exploiting Crontab
+- [Thompson](Thompson/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Poking
+  - Stored Passwords & Keys
+  - Metasploit (jsp_shell_reverse_tcp)
+  - Exploiting Crontab
+
+#### Capabilities
+
+- [Mindgames](Mindgames/README.md)
+  - Network Enumeration
+  - Web Poking
+  - Code Injection (RCE)
+  - Capabilities
+- [Undiscovered](Undiscovered/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Brute Forcing (http-post-form)
+  - Exploitation Upload
+  - Exploitation NFS
+  - Exploitation User ID
+  - Abusing SUID/GUID
+  - Capabilities
+
+#### Exploiting PATH Variable
+
+- [WWBuddy](WWBuddy/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Cross-site Scripting
+  - Brute Forcing (SSH)
+  - Exploiting PATH Variable
+
+### Windows (Walkthroughs)
+
+- [Hacking with Powershell](Hacking%20with%20Powershell/README.md)
+  - PowerShell Fundamentals
+- [Active Directory Basics](Active%20Directory%20Basics/README.md)
+  - Active Directory Fundamentals
+
+### Windows Privilage Escalation (Walkthroughs)
+
+- [Empire](Empire/README.md)
+- [Windows PrivEsc Arena](Windows%20PrivEsc%20Arena/README.md)
+- [Attacktive Directory](Attacktive%20Directory/README.md)
+- [Investigating Windows](Investigating%20Windows/README.md)
+- [Zero Logon](Zero%20Logon/README.md)
+  - Zero Logon
+
+### Windows Post-Exploitation (Walkthroughs)
+
+- [Post-Exploitation Basics](Post-Exploitation%20Basics/README.md)
+  - Windows Post-Exploitation Fundamentals
+- [PS Empire](PS%20Empire/README.md)
+- [Empire](Empire/README.md)
+- [Persistence](Persistence/README.md)
+
+### Windows (Challenges)
+
+- [Steel Mountain](Steel%20Mountain/README.md)
+  - Network Enumeration
+  - CVE-2014-6287 - Rejetto HTTP File Server (HFS) 2.3.x
+- [Alfred](Alfred/README.md)
+  - Network Enumeration
+  - Abusing Token Privileges For LPE
+- [Blueprint](Blueprint/README.md)
+  - Network Enumeration
+  - Code Injection
+  - Brute Forcing (NTML)
+- [HackPark](HackPark/README.md)
+  - Brute Forcing (http-post-form)
+  - CVE-2019-6714 - BlogEngine.NET 3.3.6
+  - Directory Traversal
+  - Windows Enumeration
+  - Exploiting Scheduler
+- [Retro](Retro/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Poking
+  - CVE-2017-0213 - Windows COM Aggregate Marshaler/IRemUnknown2
+- [Anthem](Anthem/README.md)
+  - Network Enumeration
+  - Web Poking
+  - OSINT
+  - Security Misconfiguration
+  - Backup Poking
+- [Relevant](Relevant/README.md)
+  - Network Enumeration
+  - SMB Enumeration
+  - Cryptography
+    - Base64
+  - Security Misconfiguration
+  - msfvenom (Aspx)
+  - Abusing Impersonation Privileges (PrintSpoofer)
+- [Iron Corp](Iron%20Corp/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - DNS Enumeration
+  - Brute Forcing (http-get)
+  - Web Poking
+  - Remote File Inclusion
+  - Metasploit (Delegation Tokens)
+- [Ra](Ra/README.md)
+  - Network Enumeration
+  - Web Poking
+  - SMB Enumeration
+  - CVE-2020-12772 - Spark 2.8.3
+  - Brute Forcing (NTML)
+  - Evil-WinRM
+  - Code Injection
+- [Ra 2](Ra%202/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - DNS Enumeration
+  - Brute Forcing (pfx)
+  - Brute Forcing (NTML)
+  - Abusing Impersonation Privileges (PrintSpoofer)
+- [Set](Set/README.md)
+  - Network Enumeration
+  - SSL Enumeration
+  - Web Poking
+  - Metasploit (smb_login)
+  - Linux Enumeration
+  - SMB Enumeration
+  - Brute Forcing (Hash)
+- [0day](0day/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - CVE-2014-6271 - shellshock
+  - DirtyCow
+
+### Network Forensic (Challenges)
+
+- [Startup](Startup/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - FTP Enumeration
+  - FTP Exploitation
+  - Network Forensic
+  - Crontab Manipulation
+- [Smag Grotto](Smag%20Grotto/README.md)
+  - Network Enueration
+  - Web Enumeration
+  - Network Forensics
+  - Stored Passwords & Keys
+  - Misconfigured Binaries
+- [Overpass 2 - Hacked](Overpass%202%20-%20Hacked/README.md)
+  - Network Forensic
+  - Code Injection
+  - Brute Forcing (Hash)
+  - Reverse Engineering (Go)
+  - Misconfigured Binaries
+
+### System Forensic (Walkthroughs)
+
+- [Forensics](Forensics/README.md)
+  - System Forensic
+  - Volatility Framework
+- [Volatility](Volatility/README.md)
+  - System Forensic
+  - Volatility Framework
+- [Splunk](Splunk/README.md)
+  - Splunk Fundamentals
+  - System Forensic
+
+### Databases (Challenges)
+
+- [Res](Res/README.md)
+  - Redis (RCE)
+  - Security Misconfiguration
+  - Abusing SUID/GUID
+  - Brute Forcing (Hash)
+  - Misconfigured Binaries
+- [Jacob the Boss](Jacob%20the%20Boss/README.md)
+  - Network Enumeration
+  - Jboss (Exploitation)
+  - Abusing SUID/GUID
+- [GraphQL](GraphQL/README.md)
+  - GraphQL Fundamentals
+  - GraphQL Exploitation
+
+### Coding (Walkthroughs)
+
+- [JavaScript Basics](JavaScript%20Basics/README.md)
+  - JavaScript Fundamentals
+  - Cross-Site Scripting
+- [Jupyter 101](Jupyter%20101/README.md)
+- [Intro to Python](Intro%20to%20Python/README.md)
+  - Coding Python
+  - Python Fundamemtals
+- [Scripting](Scripting/README.md)
+  - Coding Python
+  - Python Scripting
+- [Introduction to Django](Introduction%20to%20Django/README.md)
+  - Coding Python
+  - Django Fundamentals
+
+### Coding (Challenges)
+
+- [Peak Hill](Peak%20Hill/README.md)
+  - Network Enumeration
+  - FTP Enumeration
+  - Cryptography
+    - Binary
+  - Python Scripting (Decoder)
+  - Reverse Enginierung
+  - Misconfigured Binaries
+- [Python Playground](Python%20Playground/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Poking
+  - Python Scripting (Decoder)
+  - Misconfigured Binaries
+- [Spring](Spring/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Git Enumeation
+  - Exploitation (Spring Boot)
+  - Brute Forcing (Hash)
+  - Brute Forcing (SSH Key)
+- [HaskHell](HaskHell/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Misconfigured Binaries
+  - Exploiting PATH Variable
+  - Exploiting Python Flesk
+
+### Reverse Engineering (Walkthroughs)
+
+- [Intro to x86-64](Intro%20to%20x86-64/README.md)
+  - Reverse Engineering
+  - Radar 2 Fundamentals
+- [CC: Radare2](CC%20Radare2/README.md)
+  - Reverse Engineering
+  - Radar 2 Fundamentals
+- [Reversing ELF](Reversing%20ELF/README.md)
+  - Reverse Engineering
+  - Cryptography
+    - Base64
+    - Hex
+- [Basic Malware RE](Basic%20Malware%20RE/README.md)
+  - Reverse Engineering
+- [Buffer Overflow Prep](Buffer%20Overflow%20Prep/README.md)
+  - Reverse Engineering
+  - Buffer Overflow
+
+### Reverse Engineering (Challenges)
+
+- [Aster](Aster/README.md)
+  - Network Enumeration
+  - Reverse Engineering (Python)
+  - Metasploit (asterisk_login)
+  - Asterisk Call Manager
+  - Reverse Engineering (Java)
+- [Recovery](Recovery/README.md)
+  - Network Enumeration
+  - Reverse Engineering (Bash)
+  - Exploiting Crontab
+  - Reverse Engineering (Cpp)
+- [Binex](Binex/README.md)
+  - Network Enumeration
+  - Linux Enumeration
+  - SMB Enumeration
+  - Brute Forcing (SSH)
+  - Abusing SUID/GUID
+  - Buffer Overflow
+  - Exploiting PATH Variable
+- [Brainstorm](Brainstorm/README.md)
+  - Network Enumeration
+  - FTP Enumeration
+  - Reverse Engineering
+  - Buffer Overflow
+- [Dave's Blog](Daves%20Blog/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Poking
+  - Code Injection
+  - MongoDB Enumeration
+  - Misconfigured Binaries
+  - Reverse Engineering
+- [The Blob Blog](The%20Blob%20Blog/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Cryptography
+    - Base64
+    - Brainfuck
+    - Base58
+    - Vigenère
+  - Port Knocking
+  - Stored Passwords & Keys
+  - FTP Enumeration
+  - Steganography
+  - Code Injection
+  - Rerverse Engineering
+- [Gatekeeper](Gatekeeper/README.md)
+  - Network Enumeration
+  - SMB Enumeration
+  - Reverse Engineering
+  - Buffer Overflow
+  - Meterpreter (enum_applications)
+  - Meterpreter (firefox_creds)
+
+### Puzzle Challenges
+
+- [Psycho Break](Psycho%20Break/README.md)
+  - Network Enumeration
+  - Web Poking
+  - Cryptography
+    - Vigenère
+    - Morse Code (Audio)
+  - OSINT
+  - Web Enumeration
+  - Directory Traversal
+  - Reverse Engineering
+  - Steganography
+  - Brute Forcing (Binary)
+  - Exploitation Crontab
+- [Madness](Madness/README.md)
+  - Web Poking
+  - Reverse Engineering
+  - Python Scripting (Fuzzing)
+  - Steganography
+  - Abusing SUID/GUID
+- [Lian_Yu](Lian_Yu/README.md)
+  - Network Enumeration
+  - Web Enumeration
+  - Web Poking
+  - Cryptography
+    - Base58
+  - Steganography
+  - Misconfigured Binaries
+- [The Server From Hell](The%20Server%20From%20Hell/README.md)
+  - Port Poking
+  - Bash Scripting (Port Scanning)
+  - NFS Enumeration
+  - NFS Exploitation
+  - Brute Forcing (Zip)
+  - Escape Ruby Shell
+  - Capabilities (Tar)
+- [Break Out The Cage](Break%20Out%20The%20Cage/README.md)
+  - Network ENumeration
+  - FTP Enumeration
+  - Cryptography
+    - Base64
+    - Vigenère
+  - Abusing SUID/GUID
+  - Stored Passwords & Keys
+- [Gotta Catch'em All!](Gotta%20Catchem%20All/README.md)
+  - Network Enumeration
+  - Web Poking
+  - Cryptography
+    - Hex
+    - ROT13 (Amount 14)
+    - Base64
+  - Reverse Enigeering
+- [Willow](Willow/README.md)
+  - Network Enumeration
+  - Web Poking
+  - Cryptography
+    - RSA
+    - Hex
+  - Brute Forcing (SSH)
+  - Misconfigured Binaries
+  - Stored Passwords & Keys
+  - Steganography
+- [Biohazard](Biohazard/README.md)
+  - Network Enumeration
+  - Web Poking
+  - Cryptography
+    - Base64
+    - Base32
+    - Vigenère
+    - ROT13
+    - Base58
+    - Binary
+    - Hex
+  - FTP Enumeration
+  - Steganography
+  - Stored Passwords & Keys
+- [Year of the Rabbit](Year%20of%20the%20Rabbit/README.md)
+  - Network Enumeration
+  - Web Poking
+  - Steganography
+  - Stored Passwords & Keys
+  - Brute Forcing (FTP)
+  - Cryptography
+    - Brainfuck
+  - Abusing SUID/GUID
+- [Adventure Time](Adventure%20Time/README.md)
+  - Network Enumeration
+  - FTP Enumeration
+  - Bash Scripting (Loop)
+  - Staganography
+  - Web Poking
+  - Web Enumeration
+  - SSL Enumeration
+  - Cryptography
+    - Base32
+    - ROT11
+    - Binary
+    - Morse Code
+    - AES
+    - Vigenère
+    - Spoon
+  - Brute Forcing (SSH)
+- [Wonderland](Wonderland/README.md)
+  - Network Enumeration
+  - Web ENumeration
+  - Steganography
+  - Web Poking
+  - Misconfigured Binaries
+  - Reverse Engineering
+- [Looking Glass](Looking%20Glass/README.md)
+  - Network Enumeration
+  - SSH Enumeration
+  - Cryptography
+    - Vigenère
+  - Exploiting Crontab
+  - Misconfigured Binaries
+- [One Piece](One%20Piece/README.md)
+  - Network Enumeration
+  - FTP Enumeration
+  - Steganography
+  - Web Poking
+  - Crypthography
+    - Base32
+    - Base64
+    - Base85
+    - Base91
+    - Morse Code
+    - Binary
+    - Hex
+  - Web Enumeration
+  - Reverse Enigieering
+  - Stored Passwords & Keys
+- [Motunui](Motunui/README.md)
+  - Network Enumeration
+  - SMB Enumeration
+  - Web Enumeration
+  - Brute Forcing (Json API)
+  - Network Forensic
+
+### Miscellaneous
+
+- [Toolbox: Vim](Toolbox%20Vim/README.md)
+  - Linux Tools
+- [tmux](tmux/README.md)
+  - Linux Tools
+- [REmux The Tmux](REmux%20The%20Tmux/README.md)
+  - Linux Tools
+- [The Docker Rodeo](The%20Docker%20Rodeo/README.md)
+  - Docker Escaping
+- [Git Happens](Git%20Happens/README.md)
+  - Network Enumeration
+  - Enumeration Git
+- [Tor](Tor/README.md)
+- [History of Malware](History%20of%20Malware/README.md)
+- [Printer Hacking 101](Printer%20Hacking%20101/README.md)
+- [Advent of Cyber](Advent%20of%20Cyber/README.md)
+- [Advent of Cyber 2](Advent%20of%20Cyber%202/README.md)
+- **HARD:** [Borderlands](Borderlands/README.md)
+- [Attacking ICS Plant #1](Attacking%20ICS%20Plant%201/README.md)
+
