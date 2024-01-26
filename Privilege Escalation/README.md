@@ -25,8 +25,8 @@ It's rare when performing a real-world penetration test to be able to gain a foo
 # Task 3 Enumeration
 Note: Launch the target machine attached to this task to follow along.You can launch the target machine and access it directly from your browser. Alternatively, you can access it over SSH with the low-privilege user credentials below:
 
-Username: karen
-Password: Password1
+`Username: karen
+Password: Password1`
 Enumeration is the first step you have to take once you gain access to any system. You may have accessed the system by exploiting a critical vulnerability that resulted in root-level access or just found a way to send commands using a low privileged account. Penetration testing engagements, unlike CTF machines, don't end once you gain access to a specific system or user privilege level. As you will see, enumeration is as important during the post-compromise phase as it is before.
 
 ## hostname
@@ -46,8 +46,11 @@ The ps command is an effective way to see the running processes on a Linux syste
 The output of the ps (Process Status) will show the following;
 
   • `PID`: The process ID (unique to the process)
+  
   • `TTY`: Terminal type used by the user
+  
   • `Time`: Amount of CPU time used by the process (this is NOT the time this process has been running for)
+  
   • `CMD`: The command or executable running (will NOT display any command line parameter)
 
 The “ps” command provides a few useful options.
@@ -83,9 +86,14 @@ The target system may be a pivoting point to another network. The `ifconfig` com
 Following an initial check for existing interfaces and network routes, it is worth looking into existing communications. The `netstat` command can be used with several different options to gather information on existing connections.
 
    • `netstat -a`: shows all listening ports and established connections.
+   
    • `netstat -at` or `netstat -au` can also be used to list TCP or UDP protocols respectively.
-   • `netstat -l`: list ports in “listening” mode. These ports are open and ready to accept incoming connections. This can be used with the “t” option to list only ports that are listening using the TCP protocol (below) 
+   
+   • `netstat -l`: list ports in “listening” mode. These ports are open and ready to accept incoming connections. This can be used with the “t” option to list only ports 
+that are listening using the TCP protocol (below) 
+
    • `netstat -s`: list network usage statistics by protocol (below) This can also be used with the `-t` or `-u` options to limit the output to a specific protocol. 
+   
    • `netstat -tp`: list connections with the service name and PID information.
 
 This can also be used with the `-l` option to list listening ports (below). We can see the “PID/Program name” column is empty as this process is owned by another user.
@@ -96,7 +104,9 @@ Below is the same command run with root privileges and reveals this information 
  The `netstat` usage you will probably see most often in blog posts, write-ups, and courses is `netstat -ano` which could be broken down as follows;
 
    • `-a`: Display all sockets
+   
    • `-n`: Do not resolve names
+   
    • `-o`: Display timers
 
 ##  find Command
@@ -105,31 +115,46 @@ Below are some useful examples for the “find” command.
 Find files:
 
    • `find . -name flag1.txt`: find the file named “flag1.txt” in the current directory
+   
    • `find /home -name flag1.txt`: find the file names “flag1.txt” in the /home directory
+   
    • `find / -type d -name config`: find the directory named config under “/”
+   
    • `find / -type f -perm 0777`: find files with the 777 permissions (files readable, writable, and executable by all users)
+   
    • `find / -perm a=x`: find executable files
+   
    • `find /home -user frank`: find all files for user “frank” under “/home”
+   
    • `find / -mtime 10`: find files that were modified in the last 10 days
-   • `find / -atime 10`: find files that were accessed in the last 10 day
+   
+   • `find / -atime 10`: find files that were accessed in the last 10 days
+   
    • `find / -cmin -60`: find files changed within the last hour (60 minutes)
+   
    • `find / -amin -60`: find files accesses within the last hour (60 minutes)
+   
    • `find / -size 50M`: find files with a 50 MB size
 
 This command can also be used with (+) and (-) signs to specify a file that is larger or smaller than the given size. 
 Folders and files that can be written to or executed from:
 
    • `find / -writable -type d 2>/dev/null` : Find world-writeable folders
+   
    • `find / -perm -222 -type d 2>/dev/null`: Find world-writeable folders
+   
    • `find / -perm -o w -type d 2>/dev/null`: Find world-writeable folders
 
 The reason we see three different “find” commands that could potentially lead to the same result can be seen in the manual document. As you can see below, the perm parameter affects the way “find” works. 
+
    • `find / -perm -o x -type d 2>/dev/null`: Find world-executable folders
 
 Find development tools and supported languages:
 
    • `find / -name perl*`
+   
    • `find / -name python*`
+   
    • `find / -name gcc*`
 
 Find specific file permissions: 
@@ -170,11 +195,15 @@ Python 2.7.6 (default, Mar 22 2014, 22:59:56)
 Several tools can help you save time during the enumeration process. These tools should only be used to save time knowing they may miss some privilege escalation vectors. Below is a list of popular Linux enumeration tools with links to their respective Github repositories.
 The target system’s environment will influence the tool you will be able to use. For example, you will not be able to run a tool written in Python if it is not installed on the target system. This is why it would be better to be familiar with a few rather than having a single go-to tool.
 
-   • LinPeas: https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS
-   • LinEnum: https://github.com/rebootuser/LinEnum
-   • LES (Linux Exploit Suggester): https://github.com/mzet-/linux-exploit-suggester
-   • Linux Smart Enumeration: https://github.com/diego-treitos/linux-smart-enumeration
-   • Linux Priv Checker: https://github.com/linted/linuxprivchecker 
+   • LinPeas:[https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS]
+   
+   • LinEnum: {https://github.com/rebootuser/LinEnum}
+   
+   • LES (Linux Exploit Suggester): "https://github.com/mzet-/linux-exploit-suggester"
+   
+   • Linux Smart Enumeration: `https://github.com/diego-treitos/linux-smart-enumeration`
+   
+   • Linux Priv Checker: `https://github.com/linted/linuxprivchecker`
 
 # Answer the questions below
 Install and try a few automated enumeration tools on your local Linux distribution. `No answer needed`
