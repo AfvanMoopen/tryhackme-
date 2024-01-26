@@ -197,7 +197,7 @@ The target system’s environment will influence the tool you will be able to us
 
    • LinPeas:"https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS"
    
-   • LES (Linux Exploit Suggester): "https://github.com/mzet-/linux-exploit-suggester"
+   • LES (Linux Exploit Suggester): https://github.com/mzet-/linux-exploit-suggester
    
    • Linux Smart Enumeration: "https://github.com/diego-treitos/linux-smart-enumeration"
    
