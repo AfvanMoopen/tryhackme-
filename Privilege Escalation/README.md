@@ -64,7 +64,7 @@ At a high level, we are interested in two kinds of shell when it comes to exploi
     
 As a general rule, reverse shells are easier to execute and debug, however, we will cover both examples below. Don't worry too much about the syntax here: we will be looking at it in upcoming tasks. Instead notice the difference between reverse and bind shells in the following simulations.
 
-**Reverse Shell example:
+* * Reverse Shell example:
 
 Let's start with the more common reverse shell.
 
@@ -84,7 +84,7 @@ On the target:
 
 Notice that after running the command on the right, the listener receives a connection. When the whoami command is run, we see that we are executing commands as the target user. The important thing here is that we are listening on our own attacking machine, and sending a connection from the target.
 
-**Bind Shell example:
+* * Bind Shell example:
 Bind shells are less common, but still very useful.
 
 Once again, take a look at the following image. Again, on the left we have the attacker's computer, on the right we have a simulated target. Just to shake things up a little, we'll use a Windows target this time. First, we start a listener on the target -- this time we're also telling it to execute `cmd.exe`. Then, with the listener up and running, we connect from our own machine to the newly opened port.
