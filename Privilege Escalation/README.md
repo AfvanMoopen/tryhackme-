@@ -1,4 +1,14 @@
-Learn the fundamentals of Linux privilege escalation. From enumeration to exploitation, get hands-on with over 8 different privilege escalation techniques.
+Privilege Escalation
+Learn the fundamental techniques that will allow you to elevate account privileges in Linux and windows systems.
+
+• https://tryhackme.com/room/introtoshells
+
+• https://tryhackme.com/room/linprivesc
+
+• [https://tryhackme.com/room/linprivesc](https://tryhackme.com/room/windowsprivesc20)
+
+
+## ② The fundamentals of Linux privilege escalation. From enumeration to exploitation, get hands-on with over 8 different privilege escalation techniques.
 
 # Task 1 Introduction
 Privilege escalation is a journey. There are no silver bullets, and much depends on the specific configuration of the target system. The kernel version, installed applications, supported programming languages, other users' passwords are a few key elements that will affect your road to the root shell.
