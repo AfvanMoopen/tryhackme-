@@ -5,7 +5,7 @@ Learn the fundamental techniques that will allow you to elevate account privileg
 
 • https://tryhackme.com/room/linprivesc
 
-• [https://tryhackme.com/room/linprivesc](https://tryhackme.com/room/windowsprivesc20)
+• https://tryhackme.com/room/windowsprivesc20
 
 
 ## ② The fundamentals of Linux privilege escalation. From enumeration to exploitation, get hands-on with over 8 different privilege escalation techniques.
