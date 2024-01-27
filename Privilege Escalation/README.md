@@ -64,7 +64,7 @@ At a high level, we are interested in two kinds of shell when it comes to exploi
     
 As a general rule, reverse shells are easier to execute and debug, however, we will cover both examples below. Don't worry too much about the syntax here: we will be looking at it in upcoming tasks. Instead notice the difference between reverse and bind shells in the following simulations.
 
-* * Reverse Shell example:
+* *Reverse Shell example:
 
 Let's start with the more common reverse shell.
 
