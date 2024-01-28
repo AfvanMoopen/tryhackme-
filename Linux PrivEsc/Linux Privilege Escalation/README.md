@@ -268,6 +268,41 @@ find and use the appropriate kernel exploit to gain root privileges on the targe
 What is the content of the flag1.txt file? `THM-28392872729920`
 
 # Task 6 Privilege Escalation: Sudo
+Note: Launch the target machine attached to this task to follow along. You can launch the target machine and access it directly from your browser. Alternatively, you can access it over SSH with the low-privilege user credentials below:
+
+    Username: karen
+    Password: Password1
+
+The sudo command, by default, allows you to run a program with root privileges. Under some conditions, system administrators may need to give regular users some flexibility on their privileges. For example, a junior SOC analyst may need to use Nmap regularly but would not be cleared for full root access. In this situation, the system administrator can allow this user to only run Nmap with root privileges while keeping its regular privilege level throughout the rest of the system.
+
+Any user can check its current situation related to root privileges using the `sudo -l` command.
+(https://gtfobins.github.io/) is a valuable source that provides information on how any program, on which you may have sudo rights, can be used.
+
+# Leverage application functions
+Some applications will not have a known exploit within this context. Such an application you may see is the Apache2 server.
+
+In this case, we can use a "hack" to leak information leveraging a function of the application. As you can see below, Apache2 has an option that supports loading alternative configuration files (`-f` : specify an alternate ServerConfigFile).
+![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/978641fc-7634-48b6-8069-d378bc25410a)
+
+Loading the /etc/shadow file using this option will result in an error message that includes the first line of the /etc/shadow file. 
+
+# Answer the questions below
+How many programs can the user "karen" run on the target system with sudo rights? `3`
+
+![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/605e4a68-4d5d-4c01-a10a-f37f37c3b4fa)
+
+What is the content of the flag2.txt file? `THM-402028394`
+
+![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/cb2e1d7a-3ea3-4684-8e26-e438ab2b1a81)
+![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/b63fa763-a132-4134-aaf1-91e77d39a891)
+
+How would you use Nmap to spawn a root shell if your user had sudo rights on nmap?
+`sudo nmap --interactive`
+What is the hash of frank's password?
+
+![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/f2b1e39d-613b-4cb9-9064-a8a779b7a5ef)
+
+`$6$2.sUUDsOLIpXKxcr$eImtgFExyr2ls4jsghdD3DHLHHP9X50Iv.jNmwo/BJpphrPRJWjelWEz2HH.joV14aDEwW1c3CahzB1uaqeLR1:`
 
 # Task 7 Privilege Escalation: SUID
 
