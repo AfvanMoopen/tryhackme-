@@ -244,18 +244,25 @@ Although it looks simple, please remember that a failed kernel exploit can lead 
 # Answer the questions below
 find and use the appropriate kernel exploit to gain root privileges on the target system.`No answer needed`
 
-    1. Researched the Linuxer kernel 3.13 exploit 37292 based on last section. Download the exploit, rename file to `exploit.c`.
-    2. Navigate to the directroy you want to have the root directory `ssh karen@ip`
-    3. Execute commond in another command prompt `python3 -m http:server 8000`
+   1. Researched the Linuxer kernel 3.13 exploit 37292 based on last section. Download the exploit, rename file to `exploit.c`.
+
+   2. Navigate to the directroy you want to have the root directory `ssh karen@ip`
+
+   3. Execute commond in another command prompt `python3 -m http:server 8000`
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/c812ac64-7409-4485-9f61-aee67958741e)
+
     4. Then navigate a web browser- `http://localhost:8000. Make sure the file you want to upload to the target is listed on the server. 
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/4b0e7254-08c7-4c88-b342-8bd7f60aba6e)
 
-    5. LinuxKernel VM, type `ls -al`
+    5. LinuxKernel VM, type `ls -al`,the safest way to check the permissions is to run ls -al and check which directory will be suitable.
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/bbad39c9-00b2-4213-8255-874294c1d933)
+
     6. cd to tmp folder and from there you can run wget command without any issue. After the file is downloaded follow the compile commands from the screenshot and the file will exploit the kernel. Congrats! Now you are the root!
+    
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/c764bbe8-693d-4b36-bf33-d89edc63b3fc)  
+
     7.To get the flag cd to /home/matt and cat flag1.txt. The Task is completed!
+    
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/bad4bbd8-5005-4c9c-8252-d637d7bc7512)
 
 What is the content of the flag1.txt file? `THM-28392872729920`
