@@ -179,6 +179,7 @@ This should open a new window where you will first be asked for the users to who
 Note: To avoid mistyping the user's name, write "phillip" and click the Check Names button. Windows will autocomplete the user for you.
 
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/71b0763d-1efa-4cc4-ac2d-c1acc69e7ee4)
+
 Click OK, and on the next step, select the following option:
 
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/d21ced0d-2e66-4f27-a3a2-ed756d12ad26)
@@ -246,6 +247,7 @@ So far, we have organised users and computers in OUs just for the sake of it, bu
 Windows manages such policies through Group Policy Objects (GPO). GPOs are simply a collection of settings that can be applied to OUs. GPOs can contain policies aimed at either users or computers, allowing you to set a baseline on specific machines and identities. To configure GPOs, you can use the `Group Policy Management` tool, available from the start menu:
 
 The first thing you will see when opening it is your complete OU hierarchy, as defined before. To configure Group Policies, you first create a GPO under Group Policy Objects and then link it to the OU where you want the policies to apply. As an example, you can see there are some already existing GPOs in your machine:
+
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/bb2ac9db-4344-4729-81c1-6ffbfcd2d1d3)
 
 We can see in the image above that 3 GPOs have been created. From those, the `Default Domain Policy` and `RDP Policy` are linked to the `thm.local` domain as a whole, and the `Default Domain Controllers Policy` is linked to the `Domain Controllers` OU only. Something important to have in mind is that any GPO will apply to the linked OU and any sub-OUs under it. For example, the `Sales` OU will still be affected by the Default Domain Policy.
@@ -261,9 +263,11 @@ The Settings tab includes the actual contents of the GPO and lets us know what s
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/eaacc4e6-c502-49bd-b5a7-8783c30f2afc)
 
 Feel free to explore the GPO and expand on the available items using the "show" links on the right side of each configuration. In this case, the `Default Domain Policy` indicates really basic configurations that should apply to most domains, including password and account lockout policies:
+
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/6b3c5428-e958-43d4-b3c6-d9798cc587a7)
 
 Since this GPO applies to the whole domain, any change to it would affect all computers. Let's change the minimum password length policy to require users to have at least 10 characters in their passwords. To do this, right-click the GPO and select Edit:
+
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/b273852d-3ed2-4f6e-9631-29abfa9d552e)
 
 This will open a new window where we can navigate and edit all the available configurations. To change the minimum password length, go to `Computer Configurations -> Policies -> Windows Setting -> Security Settings -> Account Policies -> Password Policy` and change the required policy value:
@@ -299,6 +303,7 @@ Let's create a new GPO called `Restrict Control Panel Access` and open it for ed
 
 Notice we have enabled the Prohibit Access to Control Panel and PC settings policy.
 Once the GPO is configured, we will need to link it to all of the OUs corresponding to users who shouldn't have access to the Control Panel of their PCs. In this case, we will link the `Marketing`, `Management` and `Sales` OUs by dragging the GPO to each of them:
+
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/b8008f5e-8a46-416b-b949-d68ab63b597e)
 
 ## Auto Lock Screen GPO
@@ -312,6 +317,7 @@ Let's create a new GPO, call it `Auto Lock Screen`, and edit it. The policy to a
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/5a20f521-e871-4b05-800e-f4ecc6fae5b6)
 
 We will set the inactivity limit to 5 minutes so that computers get locked automatically if any user leaves their session open. After closing the GPO editor, we will link the GPO to the root domain by dragging the GPO to it:
+
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/1db60b0d-897f-46e4-8130-82731759cf18)
 
 Once the GPOs have been applied to the correct OUs, we can log in as any users in either Marketing, Sales or Management for verification. For this task, let's connect via RDP using Mark's credentials:
@@ -365,7 +371,9 @@ As a result, the KDC will send us a TGS along with a Service Session Key, which 
 
 ## NetNTLM Authentication
 NetNTLM works using a challenge-response mechanism. The entire process is as follows:
+
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/2912c23b-a50e-4ede-a8c9-0c1ba92bd241)
+
     1. The client sends an authentication request to the server they want to access.
     2. The server generates a random number and sends it as a challenge to the client.
     3. The client combines their NTLM password hash with the challenge (and other known data) to generate a response to the challenge and sends it back to the server for verification.
@@ -382,7 +390,9 @@ When using NetNTLM, is a user's password transmitted over the network at any poi
 
 ## Task 8 Trees, Forests and Trusts
 So far, we have discussed how to manage a single domain, the role of a Domain Controller and how it joins computers, servers and users.
+
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/a642dbd1-c8b5-4031-88dd-38527c4d872f)
+
 As companies grow, so do their networks. Having a single domain for a company is good enough to start, but in time some additional needs might push you into having more than one.
 
 ## Trees
