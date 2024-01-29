@@ -352,6 +352,7 @@ Now it's your turn to use the skills you were just taught to find a vulnerable b
 
 Answer the questions below
 1. Which user shares the name of a great comic book writer? `gerryconway`
+   
 Let’s try to open the /etc/shadow file with the base64 SUID exploit using below code snippet
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/2206aa82-0312-4e36-b013-b389b0cc8d21)
 ![image](https://github.com/AChen1719/tryhackme-walkthrough/assets/99749834/cb5a32b4-e2eb-43c6-bdb5-37e7740e6445)
