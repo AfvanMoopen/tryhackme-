@@ -606,7 +606,6 @@ Mode              Size   Type  Last modified              Name
 meterpreter > cat secrets.txt
 My Twitter password is KDSvbsw3849!
 ```
-
 What is the Twitter password revealed in the "secrets.txt" file? `KDSvbsw3849`
 
 Where is the "realsecret.txt" file located? (Full path of the file) `c:\inetpub\wwwroot\realsecret.txt `
