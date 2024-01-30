@@ -4,6 +4,9 @@ Learn to use Metasploit, a tool to probe and exploit vulnerabilities on networks
 
 [Metasploit](https://tryhackme.com/room/rpmetasploit)
 
+[Meterpreter](https://tryhackme.com/room/meterpreter)
+
+
 ## Topic's
 
 * Metasploit Fundamentals
