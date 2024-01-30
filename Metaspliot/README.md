@@ -1,4 +1,4 @@
-# Metaspliot
+# Metasploit
 
 Learn to use Metasploit, a tool to probe and exploit vulnerabilities on networks and servers.
 
